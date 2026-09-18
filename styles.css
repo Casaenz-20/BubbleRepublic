@@ -1,19 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 :root{
     --nav:  rgb(131, 113, 90);
-    --MenuHover: rgb(19, 182, 168);
+    --Turquesa: rgb(19, 182, 168);
+    --fondoGeneral: #f8fafc;
+    --textoPrincipal: #334155;
+}
+
+body{
+    background-color: var(--fondoGeneral);
+    font-family: 'Quicksand', sans-serif;
 }
 
 nav{
-    background-color: var(--nav);
+    background-color: rgba(255, 255, 255, 0);
     padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    box-shadow: 0 4px 6px rgba(19, 182, 168, 0.1);
+    font-size: large;
+    backdrop-filter: blur(10px);
+    position: sticky;
 }
 
 .nav-logo{
-   
     color: #f2c94c;
     font-size: 1.3rem;
     font-weight: 700;
@@ -21,6 +38,7 @@ nav{
 }
 
 .nav-menu{
+    color: var(--textoPrincipal);
     display: flex;
     list-style: none;
     gap: 1rem;
@@ -28,38 +46,20 @@ nav{
 }
 
 .nav-menu a{
-    color: #cbd5e1;
+    color: var(--textoPrincipal);
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.2s ease;
     border-bottom: 2px solid transparent;
 }
 
+.nav-menu a:focus, 
 .nav-menu a:hover,
-.nav-menu a:focus{
+.nav-menu a.activo {
     border-bottom-color: #f2c94c;
-    color: #f2c94c;
+    color: var(--Turquesa);
 }
 
-
-.encabezados{
-    line-height: 2px;
-    font-size: larger;
-    background-color: red;
-    color: black;
-    text-align: center;
-    padding: 3rem 1rem;
-}
-
-.encabezados h1{
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    line-height: #94a3bb;
-}
-
-.encabezados h2{
-    font-size: irem;
-    color: #94a3bb;
-    max-width: 500px;
-    margin: 0 auto;
+.encabezado{
+  background-color: transparent;
 }
