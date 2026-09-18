@@ -1,0 +1,59 @@
+:root{
+    --nav:  rgb(131, 113, 90);
+    --MenuHover: rgb(19, 182, 168);
+}
+
+nav{
+    background-color: var(--nav);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-logo{
+   
+    color: #f2c94c;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-menu{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.nav-menu a{
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-menu a:hover{
+    color: var(--MenuHover);
+}
+
+.Encabezados{
+    background-color: red;
+    color: black;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.Encabezados h1{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: #94a3bb;
+}
+
+.Encabezados h2{
+    font-size: irem;
+    color: #94a3bb;
+    max-width: 500px;
+    margin: 0 auto;
+}
