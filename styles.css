@@ -32,26 +32,32 @@ nav{
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.2s ease;
+    border-bottom: 2px solid transparent;
 }
 
-.nav-menu a:hover{
-    color: var(--MenuHover);
+.nav-menu a:hover,
+.nav-menu a:focus{
+    border-bottom-color: #f2c94c;
+    color: #f2c94c;
 }
 
-.Encabezados{
+
+.encabezados{
+    line-height: 2px;
+    font-size: larger;
     background-color: red;
     color: black;
     text-align: center;
     padding: 3rem 1rem;
 }
 
-.Encabezados h1{
+.encabezados h1{
     font-size: 1.8rem;
     margin-bottom: 1rem;
     line-height: #94a3bb;
 }
 
-.Encabezados h2{
+.encabezados h2{
     font-size: irem;
     color: #94a3bb;
     max-width: 500px;
