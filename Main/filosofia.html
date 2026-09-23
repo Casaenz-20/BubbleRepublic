@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filosofia</title>
+    <title>Filosofia - Ciencia & Escencia</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -36,27 +36,29 @@
 
         <!-- SECCIÓN INTRODUCCIÓN -->
         <section class="seccion-espaciada">
-            <div class="contenedor centrado contenedor-reducido">
+            <!-- Aplicamos oculto-arriba para que el bloque de texto suba suavemente -->
+            <div class="contenedor centrado contenedor-reducido oculto-arriba">
                 <p class="etiqueta">FILOSOFÍA CIENTÍFICA</p>
                 <h2>Fisiología cutánea. Evidencia clínica.</h2>
-                <p>En [Nombre de la Marca] formulamos basándonos en la biología de la piel, priorizando la eficacia real de los activos sobre las modas pasajeras del mercado.</p>
+                <p>En Ciencia & Escencia formulamos basándonos en la biología de la piel, priorizando la eficacia real de los activos sobre las modas pasajeras del mercado.</p>
             </div>
         </section>
 
         <!-- SECCIÓN PILARES (3 Columnas con Grid) -->
         <section class="seccion-espaciada fondo-secundario">
             <div class="contenedor cuadricula-pilares">
-                <article class="pilar">
+                <!-- Reciclamos la cascada: oculto-arriba + retrasos escalonados -->
+                <article class="pilar oculto-arriba retraso-1">
                     <span class="numero">01</span>
                     <h3 class="texto-acento">Rigor Molecular</h3>
-                    <p>En [Nombre de la Marca] auditamos cada principio activo bajo estándares de farmacología cutánea, garantizando pureza molecular y eficacia demostrada en entornos clínicos.</p>
+                    <p>En Ciencia & Escencia auditamos cada principio activo bajo estándares de farmacología cutánea, garantizando pureza molecular y eficacia demostrada en entornos clínicos.</p>
                 </article>
-                <article class="pilar">
+                <article class="pilar oculto-arriba retraso-2">
                     <span class="numero">02</span>
                     <h3 class="texto-acento">Precisión Fisiológica</h3>
                     <p>Reconocemos la singularidad del fenotipo cutáneo. Por ello, nuestras formulaciones y recomendaciones se diseñan para intervenir con precisión en las necesidades biológicas específicas de cada individuo.</p>
                 </article>
-                <article class="pilar">
+                <article class="pilar oculto-arriba retraso-3">
                     <span class="numero">03</span>
                     <h3 class="texto-acento">Transparencia</h3>
                     <p>Exigimos claridad en cada fórmula. Integramos activos de alta biodisponibilidad y compuestos validados clínicamente, priorizando la evidencia dermatológica sobre la especulación.</p>
@@ -64,10 +66,11 @@
             </div>
         </section>
 
-        <!-- SECCIÓN IDENTIDAD (Fondo Oscuro, 2 Columnas reutilizando clase de historia) -->
+        <!-- SECCIÓN IDENTIDAD (Fondo Oscuro) -->
         <section class="seccion-espaciada fondo-oscuro">
             <div class="contenedor cuadricula-historia">
-                <div>
+                <!-- Aplicamos oculto-izquierda para que este bloque entre desde un lado -->
+                <div class="oculto-izquierda">
                     <p class="etiqueta">MANIFIESTO</p>
                     <h2>Rigor clínico. Esencialismo molecular. La sofisticación de la dermocosmética contemporánea.</h2>
                 </div>
@@ -85,6 +88,26 @@
             <p class="derechos">© 2026 [Nombre de la Marca]. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- SCRIPT DE ANIMACIONES (IDÉNTICO AL DE NOSOTROS.HTML) -->
+    <script>
+        const elementosAnimables = document.querySelectorAll('.oculto-arriba, .oculto-zoom, .oculto-izquierda, .oculto-derecha');
+
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add('mostrar-scroll');
+                    observador.unobserve(entrada.target);
+                }
+            });
+        }, {
+            threshold: 0.15 
+        });
+
+        elementosAnimables.forEach(elemento => {
+            observador.observe(elemento);
+        });
+    </script>
 
 </body>
 </html>
