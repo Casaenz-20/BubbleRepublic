@@ -1,17 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
+
 :root{
-    --nav:  rgb(131, 113, 90);
-    --Turquesa: rgb(19, 182, 168);
-    --fondoGeneral: #f8fafc;
-    --textoPrincipal: #334155;
-}
+    --color-principal: #f6efec;
+    --color-secundario: #eadbd5;
+    --color-acento: #dfa297;
+    --color-acento-oscuro: #c67d72;
 
+    --color-gris: #8e8983;
+    --color-texto: #57524e;
+    --color-negro: #111111;
+    --color-blanco: #ffffff;
+
+    --fuente-titulos: "Kenao Sans Serif", Georgia, serif;
+    --fuente-texto: "Open Sans", Arial, sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box; 
+}
 body{
     background-color: var(--fondoGeneral);
     font-family: 'Quicksand', sans-serif;
