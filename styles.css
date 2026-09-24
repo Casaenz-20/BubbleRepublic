@@ -132,8 +132,23 @@ nav {
     backdrop-filter: blur(10px);
 }
 
+.nav-logo {
+    display: block;
+    flex-shrink: 0;
+    max-width: 100%;
+}
+
 .nav-logo img {
-    height: 50px;
+    display: block;
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+}
+.logo-pie {
+    display: block;
+    width: 280px;
+    max-width: 100%;
+    height: auto;
 }
 
 .nav-menu {
