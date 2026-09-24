@@ -511,10 +511,25 @@ nav {
 .encabezado{
   background-color: transparent;
 }
+
+
  /*Meylin*/
 
+.etiqueta-producto{
+    color: var(--color-texto);
+    font-size: 20px;
+    font-weight: 700px;
+    font-family: var(--fuente-titulos);
+
+}
+.tarjeta-seccion{
+    color: var(--color-acento-oscuro);
+    font-size: 30px;
+    font-weight: 700;
+    font-family: var(--fuente-titulos);
+}
 .seccion-principal{
- width: 1000px;
+ width: 2500px;
  height: 1500px;
  background-color: var(--color-secundario);
  padding:48px 24px ;
@@ -605,6 +620,7 @@ nav {
     display: flex; 
     flex-direction: column; 
     gap: 4px; 
+    font-size: 16px; 
 } 
  
 .tarjeta-titulo { 
@@ -629,7 +645,7 @@ nav {
 .tarjeta-boton { 
     margin-top: 12px; 
     padding-top: 8px; 
- 
+
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -681,3 +697,4 @@ nav {
     flex-shrink: 0; 
 
 }
+
