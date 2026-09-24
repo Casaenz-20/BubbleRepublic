@@ -508,7 +508,176 @@ nav {
     transition:var(--transition); 
 }
 
-.payment-list span:hover { 
-    transform:translateY(-5px); 
-    box-shadow: 0 15px 45px rgba(55, 42, 38, .12);
- } 
+.encabezado{
+  background-color: transparent;
+}
+ /*Meylin*/
+
+.seccion-principal{
+ width: 1000px;
+ height: 1500px;
+ background-color: var(--color-secundario);
+ padding:48px 24px ;
+}
+.contenedor-producto{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.diseño-cuadricula{
+   display: grid;
+    /* Las tarjetas se acomodan automáticamente */
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(320px, 1fr)
+    );
+    gap: 2rem;
+}
+.tarjeta-producto {
+    perspective: 1000px;
+    background-color: transparent;
+    height: 560px;
+    width: 100%;
+}
+
+/* Parte interior que realiza el giro */
+.interior-tarjeta {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.6s ease;
+
+    transform-style: preserve-3d;
+}
+
+/* Cuando la tarjeta está volteada */
+.tarjeta-producto.volteada .interior-tarjeta {
+    transform: rotateY(180deg);
+}
+
+/* Cara frontal y trasera */
+.tarjeta-frontal,
+.tarjeta-trasera {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background-color: var(--color-blanco);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+/* Cara trasera */
+.tarjeta-trasera {
+    transform: rotateY(180deg);
+}
+
+/* Contenido de la tarjeta */
+.tarjeta-contenido {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+/* Imagen */
+.tarjeta-imagen {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--color-acento);
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+}
+
+.tarjeta-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.tarjeta-texto { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4px; 
+} 
+ 
+.tarjeta-titulo { 
+    font-family: var(--fuente-titulos); 
+    font-size: 22px; 
+    line-height: 1.2; 
+    font-weight: 600; 
+ 
+    color: var(--color-acento-oscuro); 
+} 
+ 
+.tarjeta-descripcion { 
+    font-size: 12px; 
+    line-height: 1.5; 
+ 
+    color: var(--color-texto); 
+ 
+    margin-top: 4px; 
+} 
+ 
+/* Botón */ 
+.tarjeta-boton { 
+    margin-top: 12px; 
+    padding-top: 8px; 
+ 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+ 
+    gap: 8px; 
+ 
+    flex-shrink: 0; 
+} 
+ 
+.boton-personalizar { 
+    padding: 5.6px 16px; 
+ 
+    border-radius: 9999px; 
+ 
+    color: var(--color-texto); 
+ 
+    font-size: 11px; 
+    font-weight: 600; 
+ 
+    text-transform: uppercase; 
+    letter-spacing: 2.24px; 
+ 
+    display: flex; 
+    align-items: center; 
+ 
+    border: none; 
+ 
+    cursor: pointer; 
+ 
+    background-color: var(--color-gris); 
+ 
+    transition: background-color 0.2s ease, 
+    color 0.2s ease; 
+} 
+ 
+.boton-personalizar:hover { 
+    background-color: var(--color-acento-oscuro); 
+    color: var(--color-blanco); 
+} 
+ 
+/* Pie de la tarjeta trasera */ 
+.pie-tarjeta { 
+    margin-top: 12px; 
+    padding-top: 8px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; 
+    flex-shrink: 0; 
+
+}
