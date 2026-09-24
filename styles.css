@@ -394,11 +394,11 @@ nav {
     gap:1rem;
 }
 
-.service-main{
-    grid-row:span 2 ;
-    padding: 3rem;
-    background-color: #111111;
-}
+.service-main { 
+    grid-row:span 2; 
+    padding:3rem; 
+    background:var(--color-negro); 
+    color:white; }
 
 .service-main h2{
     color: white;
@@ -427,3 +427,34 @@ nav {
     min-height:250px; 
     transition:var(--transition);
  }
+
+ .service-card:hover { 
+    transform:translateY(-7px); 
+    box-shadow: 0 15px 45px rgba(55, 42, 38, .12);
+ }
+
+ .service-card h3 { 
+    margin:1.2rem 0 .8rem;
+ }
+
+ .payment-section { 
+    background:var(--color-principal);
+ }
+
+ .payment-list { 
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:.8rem;
+ }
+
+
+ .payment-list span { 
+    padding:15px 20px; 
+    background:var(--color-blanco); 
+    transition:var(--transition); 
+}
+
+.payment-list span:hover { 
+    transform:translateY(-5px); 
+    box-shadow: 0 15px 45px rgba(55, 42, 38, .12);
+ } 
