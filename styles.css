@@ -575,13 +575,27 @@ nav {
   background-color: transparent;
 }
 
-/*Meylin*/
 
-.seccion-principal {
-    width: 1000px;
-    height: 1500px;
-    background-color: var(--color-secundario);
-    padding: 48px 24px;
+ /*Meylin*/
+
+.etiqueta-producto{
+    color: var(--color-texto);
+    font-size: 20px;
+    font-weight: 700px;
+    font-family: var(--fuente-titulos);
+
+}
+.tarjeta-seccion{
+    color: var(--color-acento-oscuro);
+    font-size: 30px;
+    font-weight: 700;
+    font-family: var(--fuente-titulos);
+}
+.seccion-principal{
+ width: 2500px;
+ height: 1500px;
+ background-color: var(--color-secundario);
+ padding:48px 24px ;
 }
 
 .contenedor-producto {
@@ -669,6 +683,7 @@ nav {
     display: flex; 
     flex-direction: column; 
     gap: 4px; 
+    font-size: 16px; 
 } 
 .tarjeta-titulo { 
     font-family: var(--fuente-titulos); 
