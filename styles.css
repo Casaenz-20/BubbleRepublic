@@ -565,8 +565,14 @@ nav {
     transition: var(--transition);
 }
 
-.encabezado {
-    background-color: transparent;
+.payment-list span:hover{
+    transform: translateY(-5px);
+    box-shadow:0 15px 45px rgba(55, 42, 38, .12);
+}
+
+
+.encabezado{
+  background-color: transparent;
 }
 
 /*Meylin*/
