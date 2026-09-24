@@ -375,8 +375,47 @@ nav {
         gap: 1rem;
         text-align: center;
     }
+
+    .page-hero {
+    padding: 60px 0;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-main {
+    grid-row: auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .service-main ul {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 2rem 1.5rem;
+    min-height: auto;
+  }
+
+
+  .payment-list {
+    justify-content: center;
+  }
+
+  .payment-list span {
+    flex: 1 1 calc(50% - 0.8rem); 
+    text-align: center;
+    padding: 12px 15px;
+  }
 }
 
+/*Clases para Sevicios*/
 .page-hero{
   padding: 130px 0;
   background-color: var(--color-principal);
@@ -395,7 +434,7 @@ nav {
     text-align: center;
 }
 .container{
-    width: min(1120px);
+    width: min(100% - 2rem, 1120px);
     margin: auto;
 }
 
