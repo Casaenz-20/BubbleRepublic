@@ -4,21 +4,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bubble Republik</title>
+  <title>Nosotros - Ciencia & Escencia</title>
   <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" sizes="32x32"
+      href="../imagenes/logotipo/favicon-32.png">
 </head>
 
 <body>
-  <header class="encabezados">
-  <nav>
-    <a href="#" class="nav-logo">Bubble Republik</a>
-    <ul class="nav-menu">
-      <li><a href="../Main/index.html">Menú</a></li>
-      <li><a href="../Main/Nosotros.html" class="activo">Nosotros</a></li>
-      <li><a href="../Main/contacto.html">Contacto</a></li>
-    </ul>
-  </nav>
+
+  <!-- ENCABEZADO Y NAVEGACIÓN -->
+  <header class="encabezado">
+    <nav>
+      <a href="index.html" class="nav-logo" aria-label="Esencia &amp; Ciencia — Inicio">
+        <img
+             src="../imagenes/logotipo/logo-principal.webp"
+             alt="Esencia &amp; Ciencia"
+             width="1200"
+            height="236">
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html" class="activo">Nosotros</a></li>
+        <li><a href="filosofia.html">Filosofía</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
+
+  <main>
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <section class="seccion-hero">
+      <div class="contenedor centrado">
+        <p class="etiqueta">SOBRE Ciencia & Escencia</p>
+        <h1>Una marca nacida para <br> <span class="texto-acento">comprender la fisiología de la piel.</span></h1>
+      </div>
+    </section>
+
+    <!-- SECCIÓN HISTORIA (Usa Grid) -->
+    <section class="seccion-espaciada">
+      <div class="contenedor cuadricula-historia">
+        <div class="historia-titulos oculto-izquierda">
+          <p class="etiqueta">HISTORIA</p>
+          <h2>La ciencia dermocosmética, al servicio de tu piel.</h2>
+        </div>
+        <div class="historia-textos oculto-derecha">
+          <p>Ciencia & Escencia nace de la intersección entre la farmacología cutánea, la dermocosmética avanzada y la
+            educación en salud, impulsada por una visión farmacéutica especializada.</p>
+          <p>El proyecto surge al identificar una brecha en el mercado: la necesidad de un espacio donde el consumidor
+            no solo adquiera fórmulas, sino que comprenda la biología de su piel y el mecanismo de acción de los activos
+            que aplica.</p>
+          <p>Así nace Ciencia & Escencia: una plataforma que traduce la complejidad de la ciencia cosmética en rutinas
+            claras, profesionales y basadas en evidencia.</p>
+          <p>Actualmente en fase de expansión, nuestra hoja de ruta se enfoca en consolidarnos como el referente de
+            confianza en asesoría dermocosmética basada en datos y resultados.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN FUNDADORA (Usa Grid) -->
+    <section class="seccion-espaciada fondo-secundario">
+      <div class="contenedor cuadricula-fundadora">
+        <div class="fundadora-imagen oculto-zoom">
+          <img src="assets/fundadora.jpg" alt="Dra. Audry Fabiola Godoy López">
+        </div>
+        <div class="fundadora-info">
+          <p class="etiqueta">FUNDADORA Y DIRECTORA CIENTÍFICA</p>
+          <h2>Dra. Mey Mey</h2>
+          <p class="profesion">Farmacéutica · Maestría en Dermocosmética</p>
+          <p>Soy la Dra. MeylinDa, farmacéutica y especialista en dermocosmética por la Universidad de Barcelona.</p>
+          <p>Fundé [Nombre de la Marca] con el propósito de transformar el paradigma del cuidado cutáneo, alejándolo de
+            la intuición y acercándolo a la evidencia clínica.</p>
+          <p>Durante mi trayectoria académica y clínica, identifiqué que gran parte de los consumidores adquieren
+            activos sin comprender la necesidad fisiológica de su piel, ni la sinergia o incompatibilidad entre los
+            ingredientes.</p>
+          <blockquote class="cita-destacada">"El cuidado de la piel no se trata de acumular productos, sino de aplicar
+            la molécula correcta, en la concentración adecuada, para la necesidad biológica específica de cada
+            individuo."</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN MISIÓN Y VISIÓN (Usa Grid) -->
+    <section class="seccion-espaciada">
+      <div class="contenedor cuadricula-tarjetas">
+        <article class="tarjeta-oscura oculto-arriba retraso-1">
+          <span class="numero">01</span>
+          <h3>Nuestra misión</h3>
+          <p>Proporcionar asesoría dermocosmética de alto nivel y acceso a fórmulas validadas, empoderando a cada
+            individuo para gestionar su salud cutánea de manera informada, personalizada y basada en evidencia.</p>
+        </article>
+        <article class="tarjeta-rosa oculto-arriba retraso-2">
+          <span class="numero">02</span>
+          <h3>Nuestra visión</h3>
+          <p>Consolidar a [Nombre de la Marca] como el estándar de oro en dermocosmética personalizada, reconocida por
+            fusionar el rigor farmacéutico, la innovación científica y una experiencia de usuario excepcional.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie-pagina">
+    <div class="contenedor contenido-pie">
+      <div class="marca-pie">
+        <h3>[NOMBRE DE LA MARCA]</h3>
+        <p>Dermocosmetic Science</p>
+      </div>
+      <p class="derechos">© 2026 [Nombre de la Marca]. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Seleccionamos todos los elementos que queremos animar
+    const elementosAnimables = document.querySelectorAll('.oculto-arriba, .oculto-zoom, .oculto-izquierda, .oculto-derecha');
+
+    // Creamos el observador
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+          // Cuando el elemento entra en pantalla, le añadimos la clase que lo muestra
+          entrada.target.classList.add('mostrar-scroll');
+          // Dejamos de observarlo para que la animación solo ocurra una vez
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, {
+      threshold: 0.15 // El elemento debe estar 15% visible para que arranque la animación
+    });
+
+    // Le decimos al observador que vigile nuestros elementos
+    elementosAnimables.forEach(elemento => {
+      observador.observe(elemento);
+    });
+  </script>
+
 </body>
 
 </html>

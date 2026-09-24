@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofia - Ciencia & Escencia</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" sizes="32x32"
+      href="../imagenes/logotipo/favicon-32.png">
+</head>
+<body>
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header class="encabezado">
+        <nav>
+            <a href="index.html" class="nav-logo" aria-label="Esencia &amp; Ciencia — Inicio">
+        <img
+             src="../imagenes/logotipo/logo-principal.webp"
+             alt="Esencia &amp; Ciencia"
+             width="1200"
+            height="236">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="filosofia.html" class="activo">Filosofía</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECCIÓN PRINCIPAL (HERO) -->
+        <section class="seccion-hero">
+            <div class="contenedor centrado">
+                <p class="etiqueta">CONCEPTO DE MARCA</p>
+                <h1>La ciencia de tu piel <br> <span class="texto-acento">empieza por conocerla.</span></h1>
+            </div>
+        </section>
+
+        <!-- SECCIÓN INTRODUCCIÓN -->
+        <section class="seccion-espaciada">
+            <!-- Aplicamos oculto-arriba para que el bloque de texto suba suavemente -->
+            <div class="contenedor centrado contenedor-reducido oculto-arriba">
+                <p class="etiqueta">FILOSOFÍA CIENTÍFICA</p>
+                <h2>Fisiología cutánea. Evidencia clínica.</h2>
+                <p>En Ciencia & Escencia formulamos basándonos en la biología de la piel, priorizando la eficacia real de los activos sobre las modas pasajeras del mercado.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN PILARES (3 Columnas con Grid) -->
+        <section class="seccion-espaciada fondo-secundario">
+            <div class="contenedor cuadricula-pilares">
+                <!-- Reciclamos la cascada: oculto-arriba + retrasos escalonados -->
+                <article class="pilar oculto-arriba retraso-1">
+                    <span class="numero">01</span>
+                    <h3 class="texto-acento">Rigor Molecular</h3>
+                    <p>En Ciencia & Escencia auditamos cada principio activo bajo estándares de farmacología cutánea, garantizando pureza molecular y eficacia demostrada en entornos clínicos.</p>
+                </article>
+                <article class="pilar oculto-arriba retraso-2">
+                    <span class="numero">02</span>
+                    <h3 class="texto-acento">Precisión Fisiológica</h3>
+                    <p>Reconocemos la singularidad del fenotipo cutáneo. Por ello, nuestras formulaciones y recomendaciones se diseñan para intervenir con precisión en las necesidades biológicas específicas de cada individuo.</p>
+                </article>
+                <article class="pilar oculto-arriba retraso-3">
+                    <span class="numero">03</span>
+                    <h3 class="texto-acento">Transparencia</h3>
+                    <p>Exigimos claridad en cada fórmula. Integramos activos de alta biodisponibilidad y compuestos validados clínicamente, priorizando la evidencia dermatológica sobre la especulación.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECCIÓN IDENTIDAD (Fondo Oscuro) -->
+        <section class="seccion-espaciada fondo-oscuro">
+            <div class="contenedor cuadricula-historia">
+                <!-- Aplicamos oculto-izquierda para que este bloque entre desde un lado -->
+                <div class="oculto-izquierda">
+                    <p class="etiqueta">MANIFIESTO</p>
+                    <h2>Rigor clínico. Esencialismo molecular. La sofisticación de la dermocosmética contemporánea.</h2>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+        <div class="contenedor contenido-pie">
+            <div class="marca-pie">
+                <h3>[Nombre de la Marca]</h3>
+                <p>Dermocosmetic Science</p>
+            </div>
+            <img class="logo-pie"
+     src="../imagenes/logotipo/logo-footer-fondo-negro.png"
+     alt="Esencia &amp; Ciencia"
+     width="1200" height="236">
+            <p class="derechos">© 2026 [Nombre de la Marca]. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE ANIMACIONES (IDÉNTICO AL DE NOSOTROS.HTML) -->
+    <script>
+        const elementosAnimables = document.querySelectorAll('.oculto-arriba, .oculto-zoom, .oculto-izquierda, .oculto-derecha');
+
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add('mostrar-scroll');
+                    observador.unobserve(entrada.target);
+                }
+            });
+        }, {
+            threshold: 0.15 
+        });
+
+        elementosAnimables.forEach(elemento => {
+            observador.observe(elemento);
+        });
+    </script>
+
+</body>
+</html>
