@@ -591,6 +591,7 @@ nav {
     font-family: var(--fuente-titulos);
     margin-bottom: 20px;
 }
+
 .seccion-principal {
     width: 100%;
     min-height: 1500px;
@@ -651,6 +652,10 @@ nav {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+}
+.tarjeta-frontal:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
 }
 
 /* Cara trasera */
@@ -755,3 +760,135 @@ nav {
 .tarjeta-producto.volteada .interior-tarjeta {
     transform: rotateY(180deg);
 }
+
+/*PARTE DE CONTACTO DE KEVIN Y DEMAS PARTES QUE ME CORRESPONDEN  */
+/* CONTACTO: ESTILOS BASE DEL FORMULARIO */
+
+/* CONTACTO: ESTILOS BASE DEL FORMULARIO */
+
+.formulario-contacto {
+    width: 100%;
+    max-width: 720px;
+    margin-top: 2rem;
+    padding: 1.25rem;
+
+    background-color: var(--color-principal);
+    border: 1px solid var(--color-secundario);
+    border-top: 4px solid var(--color-acento);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 24px rgba(87, 82, 78, 0.08);
+}
+
+/* Cada etiqueta aparece encima de su campo */
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.campo-formulario label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+/* Apariencia compartida por todos los campos */
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.9rem 1rem;
+
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-texto);
+
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-gris);
+    border-radius: 10px;
+
+    transition: border-color 0.2s ease,
+                background-color 0.2s ease;
+}
+
+/* Texto de ejemplo dentro de los campos */
+.campo-formulario input::placeholder,
+.campo-formulario textarea::placeholder {
+    color: var(--color-texto);
+    opacity: 0.8;
+}
+
+/* Al pasar el cursor */
+.campo-formulario input:hover,
+.campo-formulario select:hover,
+.campo-formulario textarea:hover {
+    border-color: var(--color-acento-oscuro);
+}
+
+/* Al seleccionar un campo con el ratón o el teclado */
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+    background-color: var(--color-blanco);
+    border-color: var(--color-acento-oscuro);
+    outline: 2px solid var(--color-texto);
+    outline-offset: 3px;
+}
+
+/* Permite ampliar el mensaje únicamente hacia abajo */
+.campo-formulario textarea {
+    resize: vertical;
+}
+
+/* Aviso de campos obligatorios */
+.nota-formulario {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--color-texto);
+}
+/* Botón del formulario */
+.boton-contacto {
+    margin-top: 1.5rem;
+    padding: 0.9rem 1.5rem;
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+
+    color: var(--color-blanco);
+    background-color: var(--color-texto);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease,
+                color 0.2s ease;
+}
+
+.boton-contacto:hover {
+    background-color: var(--color-acento);
+    color: var(--color-negro);
+}
+
+.boton-contacto:focus-visible {
+    outline: 2px solid var(--color-texto);
+    outline-offset: 4px;
+}
+
+/* La respuesta ocupa espacio solo cuando tiene contenido */
+#respuesta-formulario:not(:empty) {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    padding: 1rem;
+
+    color: var(--color-texto);
+    background-color: var(--color-blanco);
+    border-left: 4px solid var(--color-acento-oscuro);
+    border-radius: 8px;
+}
+
+/* PARTE FINAL DE KEVIN  */
