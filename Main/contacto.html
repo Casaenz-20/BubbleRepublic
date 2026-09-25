@@ -1,49 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto - Ciencia & Escencia</title>
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="icon" type="image/png" sizes="32x32"
-      href="../imagenes/logotipo/favicon-32.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Esencia &amp; Ciencia</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="../imagenes/logotipo/favicon-32.png"
+    >
 </head>
 
+
+
 <body>
-  <header class="encabezado">
-    <nav>
-      <a href="index.html" class="nav-logo" aria-label="Esencia &amp; Ciencia — Inicio">
-          <img
-              src="../imagenes/logotipo/logo-principal.webp"
-              alt="Esencia &amp; Ciencia"
-              width="1200"
-              height="236">
-      </a>
-      <ul class="nav-menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="filosofia.html">Filosofía</a></li>
-        <li><a href="productos.html">Productos</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="contacto.html" class="activo">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Encabezado y navegación -->
+    <header class="encabezado">
+        <nav>
+            <a
+                href="index.html"
+                class="nav-logo"
+                aria-label="Esencia &amp; Ciencia — Inicio"
+            >
+                <img
+                    src="../imagenes/logotipo/logo-principal.webp"
+                    alt="Esencia &amp; Ciencia"
+                    width="1200"
+                    height="236"
+                >
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Nosotros.html">Nosotros</a></li>
+                <li><a href="filosofia.html">Filosofía</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li>
+                    <a href="contacto.html" class="activo" aria-current="page">
+                        Contacto
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <section class="seccion-hero">
-        <div class="contenedor centrado">
-          <p class="etiqueta">CONTACTO</p>
-          <h1>Conversemos sobre el cuidado de tu piel</h1>
-          <p>
-            Cuéntanos qué buscas y te orientamos para elegir
-            productos según las necesidades de tu piel.
-          </p>
-        </div>
+        <!-- Presentación de Contacto -->
+        <section class="seccion-hero">
+            <div class="contenedor centrado">
+                <p class="etiqueta">CONTACTO</p>
 
-      </section>
+                <h1>
+                    Tu piel merece una<br>
+                    <span class="texto-acento">orientación con criterio.</span>
+                </h1>
+
+                <p>
+                    Cada rutina comienza por conocerte. Cuéntanos qué buscas
+                    y exploremos opciones de distintas marcas para acompañar
+                    el cuidado de tu piel.
+                </p>
+            </div>
+        </section>
+
+        <!-- Formulario de contacto -->
+        <section class="seccion-espaciada" aria-labelledby="titulo-formulario">
+            <div class="contenedor">
+                <p class="etiqueta">ATENCIÓN PERSONALIZADA</p>
+
+                <h2 id="titulo-formulario">
+                    Conversemos sobre tu próxima rutina.
+                </h2>
+
+                <p>
+                    ¿Buscas un producto, quieres simplificar tu rutina
+                    o necesitas información sobre nuestros servicios?
+                    Déjanos tu consulta.
+                </p>
+
+                <form
+                    class="formulario-contacto"
+                    aria-labelledby="titulo-formulario"
+                    aria-describedby="nota-formulario"
+                >
+                    <div class="campo-formulario">
+                        <label for="nombre">Nombre completo *</label>
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Escribe tu nombre"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="correo">Correo electrónico *</label>
+                        <input
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            placeholder="nombre@ejemplo.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="motivo">¿Cómo podemos ayudarte? *</label>
+                        <select id="motivo" name="motivo" required>
+                            <option value="" disabled selected>
+                                Selecciona el motivo de tu consulta
+                            </option>
+                            <option value="asesoria">Asesoría para mi rutina</option>
+                            <option value="productos">Información sobre productos</option>
+                            <option value="pedidos">Consulta sobre pedidos</option>
+                            <option value="otra">Otra consulta</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="mensaje">Cuéntanos qué buscas *</label>
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            rows="5"
+                            maxlength="1000"
+                            placeholder="Por ejemplo: quiero simplificar mi rutina y conocer las opciones disponibles."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <p id="nota-formulario" class="nota-formulario">
+                        Los campos con * son obligatorios.
+                    </p>
+
+                    <button type="button" class="boton-contacto" id="boton-consulta">Revisar consulta</button>
+                    <p id="respuesta-formulario" role="status"></p>
+
+                </form>
+            </div>
+        </section>
     </main>
+    <script>
+        const formulario = document.querySelector(".formulario-contacto");
+        const botonConsulta = document.querySelector("#boton-consulta");
+        const respuesta = document.querySelector("#respuesta-formulario");
 
+        botonConsulta.addEventListener("click", function () {
+            respuesta.textContent = "";
+
+            if (formulario.reportValidity()) {
+                respuesta.textContent =
+                    "Los campos están completos y el formato del correo es válido.";
+            }
+        });
+
+        formulario.addEventListener("input", function () {
+            respuesta.textContent = "";
+        });
+    </script>
 </body>
-
+</html>
+</body>
 </html>
