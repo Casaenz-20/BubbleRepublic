@@ -591,6 +591,7 @@ nav {
     font-family: var(--fuente-titulos);
     margin-bottom: 20px;
 }
+
 .seccion-principal {
     width: 100%;
     min-height: 1500px;
@@ -600,13 +601,9 @@ nav {
 }
 
 .contenedor-producto {
-<<<<<<< HEAD
+    width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-=======
-    width: 100%;
-    margin: 0;
->>>>>>> 22c64ec (Actualiza tarjetas de productos)
 }
 
 .diseño-cuadricula {
@@ -656,6 +653,10 @@ nav {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+}
+.tarjeta-frontal:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
 }
 
 /* Cara trasera */
