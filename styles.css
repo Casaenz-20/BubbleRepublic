@@ -600,13 +600,8 @@ nav {
 }
 
 .contenedor-producto {
-<<<<<<< HEAD
     max-width: 1280px;
     margin: 0 auto;
-=======
-    width: 100%;
-    margin: 0;
->>>>>>> 22c64ec (Actualiza tarjetas de productos)
 }
 
 .diseño-cuadricula {
