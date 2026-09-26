@@ -34,16 +34,16 @@
 
 <section class="section">
     <div class="container service-grid">
-        <article class="service-main"><span>01</span><h2>Asesoría dermocosmética personalizada</h2><p>Identificamos las necesidades de la piel y orientamos sobre una rutina adecuada.</p>
+        <article class="service-main oculto-zoom"><span>01</span><h2>Asesoría dermocosmética personalizada</h2><p>Identificamos las necesidades de la piel y orientamos sobre una rutina adecuada.</p>
             <ul>
                 <li>Limpieza</li><li>Hidratación</li><li>Protección solar</li><li>Activos de tratamiento</li>
                 <li>Orden de aplicación</li><li>Frecuencia de uso</li><li>Compatibilidad entre productos</li><li>Hábitos de cuidado</li>
             </ul>
         </article>
-        <article class="service-card"><span>02</span><h3>Venta de productos</h3><p>Productos seleccionados de laboratorios especializados para diferentes necesidades de la piel.</p></article>
-        <article class="service-card"><span>03</span><h3>Asesoría online</h3><p>Orientación virtual independientemente de la ubicación del cliente.</p></article>
-        <article class="service-card"><span>04</span><h3>Pedidos</h3><p>Consulta disponibilidad y opciones para realizar tu pedido.</p></article>
-        <article class="service-card"><span>05</span><h3>Entrega a domicilio</h3><p>Consulta las opciones de entrega disponibles.</p></article>
+        <article class="service-card oculto-arriba"><span>02</span><h3>Venta de productos</h3><p>Productos seleccionados de laboratorios especializados para diferentes necesidades de la piel.</p></article>
+        <article class="service-card oculto-arriba"><span>03</span><h3>Asesoría online</h3><p>Orientación virtual independientemente de la ubicación del cliente.</p></article>
+        <article class="service-card oculto-arriba"><span>04</span><h3>Pedidos</h3><p>Consulta disponibilidad y opciones para realizar tu pedido.</p></article>
+        <article class="service-card oculto-arriba"><span>05</span><h3>Entrega a domicilio</h3><p>Consulta las opciones de entrega disponibles.</p></article>
     </div>
 </section>
 
@@ -66,5 +66,25 @@
             <p class="derechos">© 2026 Esencia &amp; Ciencia. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+     <script>
+        const elementosAnimables = document.querySelectorAll('.oculto-arriba, .oculto-zoom, .oculto-izquierda, .oculto-derecha');
+
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add('mostrar-scroll');
+                    observador.unobserve(entrada.target);
+                }
+            });
+        }, {
+            threshold: 0.15 
+        });
+
+        elementosAnimables.forEach(elemento => {
+            observador.observe(elemento);
+        });
+    </script>
+
 </body>
 </html>

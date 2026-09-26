@@ -431,42 +431,42 @@ nav {
         text-align: center;
     }
 
-.page-hero {
-    padding: 60px 0;
-}
+    .page-hero {
+        padding: 60px 0;
+    }
 
-.section {
-    padding: 60px 0;
-}
+    .section {
+        padding: 60px 0;
+    }
 
-.service-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-}
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 
-.service-main {
-    grid-row: auto;
-    padding: 2rem 1.5rem;
-}
-.service-main ul {
-    grid-template-columns: 1fr;
-}
+    .service-main {
+        grid-row: auto;
+        padding: 2rem 1.5rem;
+    }
+    .service-main ul {
+        grid-template-columns: 1fr;
+    }
 
-.service-card {
-    padding: 2rem 1.5rem;
-    min-height: auto;
-}
+    .service-card {
+        padding: 2rem 1.5rem;
+        min-height: auto;
+    }
 
 
-.payment-list {
-    justify-content: center;
-}
+    .payment-list {
+        justify-content: center;
+    }
 
-.payment-list span {
-    flex: 1 1 calc(50% - 0.8rem);
-    text-align: center;
-    padding: 12px 15px;
-}
+    .payment-list span {
+        flex: 1 1 calc(50% - 0.8rem);
+        text-align: center;
+        padding: 12px 15px;
+    }
 }
 
 /*Clases para Sevicios*/
@@ -481,6 +481,10 @@ nav {
 
 .eyebrow {
     color: var(--color-acento-oscuro);
+    font-size: .72rem; 
+    font-weight: 700; 
+    letter-spacing: .22em; 
+    margin-bottom: 1rem; 
 
 }
 
@@ -892,3 +896,171 @@ nav {
 }
 
 /* PARTE FINAL DE KEVIN  */
+
+
+/*Clases para index(inicio)*/
+
+.hero{
+    min-height:calc(100vh - 82px); 
+    background:var(--color-principal); 
+    display:flex; 
+    align-items:center;
+    overflow:hidden; 
+}
+
+.hero-grid { 
+    display:grid; 
+    grid-template-columns:1fr .85fr; 
+    gap:5rem; 
+    align-items:center;
+}
+
+.hero-buttons { 
+    display:flex; 
+    gap:1rem; 
+    flex-wrap:wrap;
+}
+
+.btn { 
+    display:inline-block; 
+    border:1px solid var(--color-negro); 
+    background:var(--color-negro); 
+    color:var(--color-blanco); padding:13px 23px; 
+    font-size:.75rem; font-weight:700; 
+    letter-spacing:.08em; 
+    text-transform:uppercase; 
+    transition:var(--transition); 
+    cursor:pointer;
+}
+
+.btn-light { 
+    background:var(--color-blanco); 
+    color:var(--color-negro); 
+    border-color:var(--color-blanco); 
+}
+
+.btn-outline {
+    background:transparent; 
+    color:var(--color-negro);
+}
+
+.hero-photo { 
+    position:relative; 
+    max-width:470px; 
+    justify-self:end; 
+}
+
+.hero-photo img { 
+    position:relative; 
+    z-index:2; 
+    border-radius:250px 250px 25px 25px; 
+    box-shadow:0 15px 45px rgba(55, 42, 38, .12);
+}
+
+.photo-border { 
+    position:absolute; 
+    inset:25px -25px -25px 25px; 
+    border:1px solid var(--color-acento); 
+    border-radius:250px 250px 25px 25px; 
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float { 
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
+
+.intro { 
+    background:var(--color-blanco); 
+}
+
+.two-columns { 
+    display:grid; 
+    grid-template-columns:.8fr 1.2fr; 
+    gap:6rem; 
+    align-items:start;
+}
+
+.text-link { 
+    display:inline-block;
+    margin-top:1.5rem; 
+    color:var(--color-acento-oscuro); 
+    font-weight:700; 
+    border-bottom:1px solid var(--color-acento); 
+    padding-bottom:3px; 
+    transition:var(--transition);
+}
+
+.text-link:hover { 
+    transform:translateX(5px); 
+}
+
+
+.dark-section { 
+    background:var(--color-negro); 
+    color:var(--color-blanco); 
+}
+
+.dark-section h2 { 
+    color:var(--color-blanco); 
+}
+
+.dark-section .eyebrow {
+    color:var(--color-acento); 
+}
+
+.max-text { 
+    max-width: 700px; 
+    margin: 1.5rem auto 2rem; 
+}
+
+.section-title-row { 
+    display:flex; 
+    justify-content:space-between; 
+    gap:3rem; align-items:end; 
+    margin-bottom:3rem; 
+}
+
+.section-title-row > p { 
+    max-width:420px; 
+}
+
+.mini-grid { 
+    display:grid; 
+    grid-template-columns:repeat(4,1fr); 
+    gap:1rem; 
+}
+
+.mini-grid article { 
+    background:var(--color-principal); 
+    padding:2rem; min-height:180px; 
+    transition:var(--transition); 
+}
+
+.mini-grid article:hover { 
+    transform:translateY(-8px); 
+    background:var(--color-negro); 
+}
+
+.mini-grid article:hover h3,.mini-grid article:hover p { 
+    color:var(--color-blanco); 
+}
+
+.mini-grid span { 
+    color:var(--color-acento-oscuro); 
+    font-size:.75rem; 
+}
+
+.mini-grid h3 { 
+    margin:1.2rem 0 .5rem; 
+    font-size:1.5rem; 
+}
+
+.cta { 
+    background:var(--color-acento); 
+    padding:100px 0; 
+}
+.cta h2 { 
+    max-width:800px; 
+    margin:0 auto 2rem; 
+}
