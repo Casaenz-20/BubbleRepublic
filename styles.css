@@ -18,6 +18,7 @@
     --color-tarjeta:#EAD9D4;
     --color-boton: #B86F67;
     --color-btn-hover:#f3897f;
+    --color-tarjeta-hover: #e9e9e9;
     --fuente-titulos: "Kenao Sans Serif", Georgia, serif;
     --fuente-texto: "Open Sans", Arial, sans-serif;
 }
@@ -688,6 +689,12 @@ nav {
 
  /*Meylin*/
 
+p::selection,
+h1::selection,
+h2::selection {
+    background-color: var(--color-tarjeta);
+}
+
 .etiqueta-producto {
     color: var(--color-texto);
     font-size: 20px;
@@ -700,6 +707,20 @@ nav {
     font-weight: 700;
     font-family: var(--fuente-titulos);
     margin-bottom: 20px;
+    text-align: center;
+    animation: aparecer 1s ease-in-out both;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .seccion-principal {
@@ -763,10 +784,17 @@ nav {
     justify-content: space-between;
     overflow: hidden;
 }
-.tarjeta-frontal:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-    background-color: var(--color-secundario);
+
+/* Recupera el realce de las tarjetas al pasar el cursor sin afectar el giro. */
+.tarjeta-frontal {
+    transition: transform 0.3s ease, background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.tarjeta-producto:not(.volteada):hover .tarjeta-frontal {
+    transform: translateY(-8px) scale(1.02);
+    background-color: var(--color-tarjeta-hover);
+    box-shadow: 0 14px 28px rgba(87, 82, 78, 0.16);
 }
 
 /* Cara trasera */
@@ -779,7 +807,18 @@ nav {
 .tarjeta-contenido {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
+    padding-bottom: 8px;
+}
+
+/* Mantiene el texto arriba y reserva una posición uniforme para los botones. */
+.tarjeta-frontal .tarjeta-contenido {
+    justify-content: flex-start;
+}
+
+.tarjeta-trasera .tarjeta-contenido {
+    justify-content: flex-start;
 }
 /* Imagen */
 .tarjeta-imagen {
