@@ -10,7 +10,7 @@
       href="../imagenes/logotipo/favicon-32.png">
 </head>
 
-<body>
+<body id="inicio-pagina">
 
   <!-- ENCABEZADO Y NAVEGACIÓN -->
   <header class="encabezado">
@@ -102,15 +102,139 @@
   </main>
 
   <!-- PIE DE PÁGINA -->
-  <footer class="pie-pagina">
-    <div class="contenedor contenido-pie">
-      <div class="marca-pie">
-        <h3>[NOMBRE DE LA MARCA]</h3>
-        <p>Dermocosmetic Science</p>
-      </div>
-      <p class="derechos">© 2026 [Nombre de la Marca]. Todos los derechos reservados.</p>
+<footer class="footer-sitio">
+    <div class="contenedor">
+        <div class="footer-columnas">
+
+            <!-- Logo y redes -->
+            <div class="footer-marca">
+                <a
+                    class="footer-logo"
+                    href="index.html"
+                    aria-label="Esencia y Ciencia — Inicio"
+                >
+                    <img
+                        src="../imagenes/logotipo/logo-principal.webp"
+                        alt="Esencia &amp; Ciencia"
+                    >
+                </a>
+
+                <ul class="footer-redes" aria-label="Redes sociales y contacto">
+                    <li>
+                        <button
+                            class="footer-social"
+                            type="button"
+                            aria-label="Facebook"
+                            title="Facebook"
+                        >
+                            <img
+                                class="footer-icono"
+                                src="../imagenes/iconos/facebook.svg"
+                                alt=""
+                            >
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="footer-social"
+                            type="button"
+                            aria-label="Instagram"
+                            title="Instagram"
+                        >
+                            <img
+                                class="footer-icono"
+                                src="../imagenes/iconos/instagram.svg"
+                                alt=""
+                            >
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="footer-social"
+                            type="button"
+                            aria-label="WhatsApp"
+                            title="WhatsApp"
+                        >
+                            <img
+                                class="footer-icono"
+                                src="../imagenes/iconos/whatsapp.svg"
+                                alt=""
+                            >
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="footer-social"
+                            type="button"
+                            aria-label="Correo electrónico"
+                            title="Correo electrónico"
+                        >
+                            <img
+                                class="footer-icono"
+                                src="../imagenes/iconos/correo.svg"
+                                alt=""
+                            >
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Navegación -->
+            <nav
+                class="footer-navegacion"
+                aria-label="Navegación del pie de página"
+            >
+                <h2>Explora</h2>
+
+                <ul>
+                    <li><a href="Nosotros.html">Nosotros</a></li>
+                    <li><a href="filosofia.html">Filosofía</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <!-- Ubicaciones -->
+            <div class="footer-ubicaciones">
+                <h2>Visítanos</h2>
+
+                <ul>
+                    <li>
+                        <a href="contacto.html#ubicaciones">
+                            <span class="footer-local">Upala centro</span>
+                            <span class="footer-direccion">
+                                Upala, Alajuela
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html#ubicaciones">
+                            <span class="footer-local">Ciudad Quesada</span>
+                            <span class="footer-direccion">
+                                San Carlos, Alajuela
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Cierre -->
+        <div class="footer-cierre">
+            <small>© 2026 Esencia &amp; Ciencia.   Todos los derechos reservados.</small>
+
+            <a class="footer-volver" href="#inicio-pagina">
+                Volver arriba
+                <span aria-hidden="true">↑</span>
+            </a>
+        </div>
     </div>
-  </footer>
+</footer>
 
   <script>
     // Seleccionamos todos los elementos que queremos animar
