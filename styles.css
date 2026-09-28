@@ -656,10 +656,17 @@ nav {
     justify-content: space-between;
     overflow: hidden;
 }
-.tarjeta-frontal:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+
+/* Recupera el realce de las tarjetas al pasar el cursor sin afectar el giro. */
+.tarjeta-frontal {
+    transition: transform 0.3s ease, background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.tarjeta-producto:not(.volteada):hover .tarjeta-frontal {
+    transform: translateY(-8px) scale(1.02);
     background-color: var(--color-secundario);
+    box-shadow: 0 14px 28px rgba(87, 82, 78, 0.16);
 }
 
 /* Cara trasera */
@@ -744,6 +751,17 @@ nav {
     background-color: var(--color-btn-hover); 
     color: var(--color-texto); 
 } 
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta-frontal,
+    .boton-personalizar {
+        transition: none;
+    }
+
+    .tarjeta-producto:not(.volteada):hover .tarjeta-frontal {
+        transform: none;
+    }
+}
 
 /* Pie de la tarjeta trasera */ 
 .pie-tarjeta { 
