@@ -1557,17 +1557,11 @@ nav {
     transform:translateX(5px);
 }
 
-
-.dark-section {
-    background:var(--color-negro);
+.fondo-oscuro h2 {
     color:var(--color-blanco);
 }
 
-.dark-section h2 {
-    color:var(--color-blanco);
-}
-
-.dark-section .eyebrow {
+.fondo-oscuro .eyebrow {
     color:var(--color-acento);
 }
 
