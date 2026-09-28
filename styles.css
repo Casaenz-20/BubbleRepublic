@@ -22,6 +22,112 @@
     --fuente-texto: "Open Sans", Arial, sans-serif;
 }
 
+/* ============================================
+   CONTROL DE CARGA Y PRELOADER (VERSIÓN BLINDADA)
+   ============================================ */
+
+/* 1. Mientras carga: bloqueamos scroll y ocultamos TODO el contenido */
+body.cargando {
+    overflow: hidden !important;
+}
+
+body.cargando header,
+body.cargando main,
+body.cargando footer {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: none !important; /* Evita cualquier animación no deseada al inicio */
+}
+
+/* 2. Cuando termina de cargar: revelamos el contenido suavemente */
+body:not(.cargando) header,
+body:not(.cargando) main,
+body:not(.cargando) footer {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out !important;
+}
+
+/* 3. Preloader: siempre visible y por encima de todo mientras esté activo */
+.preloader {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 999999 !important;
+    background-color: var(--color-principal) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out !important;
+}
+
+.preloader.oculto {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* --- Animaciones internas del Preloader --- */
+.preloader-contenido {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    text-align: center !important;
+}
+
+.preloader-logo { 
+    width: 280px !important; 
+    max-width: 70vw !important; 
+    height: auto !important; 
+    opacity: 0; 
+    animation: revelarLogo 1s ease-out 0.3s forwards; 
+}
+@keyframes revelarLogo { to { opacity: 1; } }
+
+.molecula-svg { width: 200px !important; height: 40px !important; }
+
+.trazo-molecular { 
+    stroke-dasharray: 400; 
+    stroke-dashoffset: 400; 
+    animation: dibujarTrazo 1.8s ease-in-out 0.5s forwards; 
+}
+@keyframes dibujarTrazo { to { stroke-dashoffset: 0; } }
+
+.nodo-molecular { opacity: 0; animation: aparecerNodo 0.5s ease-out forwards; }
+.nodo-molecular:nth-child(2) { animation-delay: 1s; }
+.nodo-molecular:nth-child(3) { animation-delay: 1.3s; }
+.nodo-molecular:nth-child(4) { animation-delay: 1.6s; }
+
+@keyframes aparecerNodo {
+    0% { opacity: 0; transform: scale(0); }
+    60% { transform: scale(1.3); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.preloader-texto {
+    font-family: var(--fuente-texto);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-acento-oscuro);
+    opacity: 0;
+    animation: fadeSuave 1s ease-out 1.8s forwards;
+}
+@keyframes fadeSuave { to { opacity: 1; } }
+
+/* 4. Definición base del body (SIN animaciones que interfieran) */
+body {
+    background-color: var(--color-blanco);
+    font-family: var(--fuente-texto);
+    color: var(--color-texto);
+    line-height: 1.7;
+    /* Ya no hay 'animation' aquí. El control lo tiene la clase .cargando */
+}
+
 /*RESETEO Y ESTILOS BASE*/
 * {
     margin: 0;
@@ -35,8 +141,6 @@ body {
     font-family: var(--fuente-texto);
     color: var(--color-texto);
     line-height: 1.7;
-    /* Dispara la animación automáticamente al cargar el HTML */
-    animation: entradaSuave 0.6s ease-out forwards;
 }
 
 @keyframes entradaSuave {
