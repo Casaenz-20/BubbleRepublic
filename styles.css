@@ -126,7 +126,6 @@ body {
     font-family: var(--fuente-texto);
     color: var(--color-texto);
     line-height: 1.7;
-    /* Ya no hay 'animation' aquí. El control lo tiene la clase .cargando */
 }
 
 /*RESETEO Y ESTILOS BASE*/
