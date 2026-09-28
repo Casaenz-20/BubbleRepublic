@@ -468,7 +468,11 @@
                 respuesta.textContent = "";
 
                 if (formulario.reportValidity()) {
-                    respuesta.textContent = "¡Enviado!";
+                  // Limpia los campos después de validar.
+                  formulario.reset();
+
+                  // Mantiene visible la confirmación.
+                  respuesta.textContent = "¡Enviado!";
                 }
             });
 
