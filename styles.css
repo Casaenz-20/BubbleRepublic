@@ -15,7 +15,9 @@
     --color-negro: #111111;
     --color-blanco: #ffffff;
     --transition: 0.35s ease;
-
+    --color-tarjeta:#EAD9D4;
+    --color-boton: #B86F67;
+    --color-btn-hover:#f3897f;
     --fuente-titulos: "Kenao Sans Serif", Georgia, serif;
     --fuente-texto: "Open Sans", Arial, sans-serif;
 }
@@ -660,6 +662,7 @@ nav {
 .tarjeta-frontal:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease;
+    background-color: var(--color-secundario);
 }
 
 /* Cara trasera */
@@ -681,7 +684,7 @@ nav {
     height: 220px;
     border-radius: 4px;
     overflow: hidden;
-    background-color: var(--color-acento);
+    background-color: var(--color-tarjeta);
     margin-bottom: 12px;
     flex-shrink: 0;
 }
@@ -736,13 +739,13 @@ nav {
     align-items: center; 
     border: none; 
     cursor: pointer; 
-    background-color: var(--color-gris); 
+    background-color: var(--color-boton); 
     transition: background-color 0.2s ease, 
     color 0.2s ease; 
-}  
+}
 .boton-personalizar:hover { 
-    background-color: var(--color-acento-oscuro); 
-    color: var(--color-blanco); 
+    background-color: var(--color-btn-hover); 
+    color: var(--color-texto); 
 } 
 
 /* Pie de la tarjeta trasera */ 
