@@ -599,6 +599,20 @@ h2::selection {
     font-weight: 700;
     font-family: var(--fuente-titulos);
     margin-bottom: 20px;
+    text-align: center;
+    animation: aparecer 1s ease-in-out both;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .seccion-principal {
@@ -686,7 +700,18 @@ h2::selection {
 .tarjeta-contenido {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
+    padding-bottom: 8px;
+}
+
+/* Mantiene el texto arriba y reserva una posición uniforme para los botones. */
+.tarjeta-frontal .tarjeta-contenido {
+    justify-content: flex-start;
+}
+
+.tarjeta-trasera .tarjeta-contenido {
+    justify-content: flex-start;
 }
 /* Imagen */
 .tarjeta-imagen {
@@ -710,6 +735,7 @@ h2::selection {
     flex-direction: column; 
     gap: 4px; 
     font-size: 16px; 
+    min-height: 0;
 } 
 .tarjeta-titulo { 
     font-family: var(--fuente-titulos); 
@@ -727,8 +753,8 @@ h2::selection {
 
 /* Botón */ 
 .tarjeta-boton { 
-    margin-top: 12px; 
-    padding-top: 8px; 
+    margin-top: auto;
+    padding-top: 12px;
 
     display: flex; 
     align-items: center; 
@@ -751,18 +777,28 @@ h2::selection {
     border: none; 
     cursor: pointer; 
     background-color: var(--color-boton); 
-    transition: background-color 0.2s ease, 
-    color 0.2s ease; 
+    transition: background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 .boton-personalizar:hover { 
     background-color: var(--color-btn-hover); 
     color: var(--color-texto); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(87, 82, 78, 0.18);
+}
+.boton-personalizar:active {
+    transform: translateY(0) scale(0.96);
+    box-shadow: none;
 } 
 
 @media (prefers-reduced-motion: reduce) {
     .tarjeta-frontal,
-    .boton-personalizar {
+    .boton-personalizar,
+    .tarjeta-seccion {
         transition: none;
+        animation: none;
     }
 
     .tarjeta-producto:not(.volteada):hover .tarjeta-frontal {
