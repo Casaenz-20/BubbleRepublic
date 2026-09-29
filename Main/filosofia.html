@@ -10,15 +10,19 @@
 </head>
 <body id="inicio-pagina">
 
-    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <!-- Encabezado con el menú principal del sitio. -->
     <header class="encabezado">
+        <!-- Desde aquí se puede ir al inicio o a cualquiera de las otras secciones. -->
         <nav>
+            <!-- El logo también funciona como acceso directo al inicio. -->
             <a href="index.html" class="nav-logo" aria-label="Esencia &amp; Ciencia — Inicio">
                 <img src="../imagenes/logotipo/logo-principal.webp" alt="Esencia &amp; Ciencia" width="1200" height="236">
             </a>
+            <!-- Enlaces a las páginas principales. -->
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
+                <!-- La clase "activo" resalta la página actual en el menú. -->
                 <li><a href="filosofia.html" class="activo">Filosofía</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
@@ -28,7 +32,7 @@
     </header>
 
     <main>
-        <!-- SECCIÓN PRINCIPAL (HERO) -->
+        <!-- La idea principal de la página: para cuidar la piel, primero hay que conocerla. -->
         <section class="seccion-hero">
             <div class="contenedor centrado">
                 <p class="etiqueta">CONCEPTO DE MARCA</p>
@@ -36,9 +40,8 @@
             </div>
         </section>
 
-        <!-- SECCIÓN INTRODUCCIÓN -->
+        <!-- Aquí resumimos el enfoque antes de explicar sus pilares. -->
         <section class="seccion-espaciada">
-            <!-- Aplicamos oculto-arriba para que el bloque de texto suba suavemente -->
             <div class="contenedor centrado contenedor-reducido oculto-arriba">
                 <p class="etiqueta">FILOSOFÍA CIENTÍFICA</p>
                 <h2>Fisiología cutánea. Evidencia clínica.</h2>
@@ -46,10 +49,9 @@
             </div>
         </section>
 
-        <!-- SECCIÓN PILARES (3 Columnas con Grid) -->
+        <!-- Estos son los tres criterios que guían nuestras recomendaciones. -->
         <section class="seccion-espaciada fondo-secundario">
             <div class="contenedor cuadricula-pilares">
-                <!-- Reciclamos la cascada: oculto-arriba + retrasos escalonados -->
                 <article class="pilar oculto-arriba retraso-1">
                     <span class="numero">01</span>
                     <h3 class="texto-acento">Rigor Molecular</h3>
@@ -68,10 +70,9 @@
             </div>
         </section>
 
-        <!-- SECCIÓN IDENTIDAD (Fondo Oscuro) -->
+        <!-- Cerramos con una frase que resume la identidad de la marca. -->
         <section class="seccion-espaciada fondo-oscuro">
             <div class="contenedor cuadricula-historia">
-                <!-- Aplicamos oculto-izquierda para que este bloque entre desde un lado -->
                 <div class="oculto-izquierda">
                     <p class="etiqueta">MANIFIESTO</p>
                     <h2>Rigor clínico. Esencialismo molecular. La sofisticación de la dermocosmética contemporánea.</h2>
@@ -214,21 +215,27 @@
         </div>
     </div>
 </footer>
-    <!-- SCRIPT DE ANIMACIONES (IDÉNTICO AL DE NOSOTROS.HTML) -->
+    <!-- Animamos algunos bloques cuando aparecen al desplazarse por la página. -->
     <script>
+        // Buscamos los elementos que tienen una animación de entrada.
         const elementosAnimables = document.querySelectorAll('.oculto-arriba, .oculto-zoom, .oculto-izquierda, .oculto-derecha');
 
+        // El observador espera a que cada elemento entre en pantalla.
         const observador = new IntersectionObserver((entradas) => {
             entradas.forEach(entrada => {
                 if (entrada.isIntersecting) {
+                    // Esta clase activa la transición definida en CSS.
                     entrada.target.classList.add('mostrar-scroll');
+                    // Ya visible, no hace falta seguir observando el elemento.
                     observador.unobserve(entrada.target);
                 }
             });
         }, {
+            // La animación empieza cuando el 15 % del elemento está visible.
             threshold: 0.15 
         });
 
+        // Le pedimos al observador que revise cada elemento de la lista.
         elementosAnimables.forEach(elemento => {
             observador.observe(elemento);
         });

@@ -161,9 +161,9 @@ body {
     navigation: auto;
 }
 
-/* --- ANIMACIONES DE SCROLL --- */
+/* Estas clases preparan los elementos para aparecer al desplazarse por la página. */
 
-/* 1. Estado inicial oculto (Desplazado hacia abajo) */
+/* El bloque empieza un poco más abajo y sube al mostrarse. */
 .oculto-arriba {
     opacity: 0;
     transform: translateY(40px);
@@ -171,7 +171,7 @@ body {
         transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 2. Estado inicial oculto (Zoom para imágenes) */
+/* La imagen aparece suavemente y vuelve a su tamaño normal. */
 .oculto-zoom {
     opacity: 0;
     transform: scale(1.05);
@@ -179,7 +179,7 @@ body {
         transform 1s ease-out;
 }
 
-/* 3. Estado inicial oculto (Desplazado hacia la izquierda) */
+/* El bloque entra desde el lado izquierdo. */
 .oculto-izquierda {
     opacity: 0;
     transform: translateX(-50px);
@@ -187,7 +187,7 @@ body {
         transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 4. Estado inicial oculto (Desplazado hacia la derecha) */
+/* El bloque entra desde el lado derecho. */
 .oculto-derecha {
     opacity: 0;
     transform: translateX(50px);
@@ -195,6 +195,7 @@ body {
         transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* Estos retrasos hacen que los elementos aparezcan uno después del otro. */
 .retraso-1 {
     transition-delay: 0.1s;
 }
@@ -207,7 +208,7 @@ body {
     transition-delay: 0.5s;
 }
 
-/* La clase que JavaScript añadirá cuando el elemento sea visible en pantalla */
+/* JavaScript agrega esta clase cuando el elemento entra en pantalla. */
 .mostrar-scroll {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -218,16 +219,19 @@ img {
     display: block;
 }
 
+/* Mantiene el contenido centrado y evita que las líneas sean demasiado largas. */
 .contenedor {
     width: 90%;
     max-width: 1100px;
     margin: 0 auto;
 }
 
+/* Se usa en los bloques que presentan su contenido al centro. */
 .centrado {
     text-align: center;
 }
 
+/* Este fondo suave separa algunas secciones sin cambiar la paleta del sitio. */
 .fondo-secundario {
     background-color: var(--color-principal);
 }
@@ -254,6 +258,7 @@ h3 {
     font-size: 1.5rem;
 }
 
+/* Da énfasis al fragmento destacado de los títulos. */
 .texto-acento {
     color: var(--color-acento-oscuro);
 }
@@ -262,6 +267,7 @@ p {
     margin-bottom: 1rem;
 }
 
+/* Estilo común para rótulos como "Historia" o "Manifiesto". */
 .etiqueta {
     color: var(--color-acento-oscuro);
     font-size: 0.8rem;
@@ -271,7 +277,7 @@ p {
     margin-bottom: 1rem;
 }
 
-/*NAVEGACIÓN Y ENCABEZADO*/
+/* La barra permanece arriba mientras se recorre la página. */
 .encabezado {
     background-color: transparent;
     position: sticky;
@@ -279,6 +285,7 @@ p {
     z-index: 100;
 }
 
+/* Estilos base de las barras de navegación del sitio. */
 nav {
     background-color: rgba(255, 255, 255, 0.85);
     /* Un poco de opacidad para que se lea */
@@ -293,6 +300,7 @@ nav {
     backdrop-filter: blur(10px);
 }
 
+/* El logo conserva su tamaño y no se encoge junto con los enlaces. */
 .nav-logo {
     display: block;
     flex-shrink: 0;
@@ -312,13 +320,14 @@ nav {
     height: auto;
 }
 
+/* Los enlaces principales quedan alineados y con espacio entre ellos. */
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 1.5rem;
 }
 
-/* PEGA ESTO NUEVO: */
+/* Los enlaces cambian de color y muestran una línea al pasar, enfocarlos o estar activos. */
 .nav-menu a {
     color: var(--color-texto);
     text-decoration: none;
@@ -356,24 +365,25 @@ nav {
     transform-origin: left;
 }
 
-/* SECCIONES Y GRID*/
+/* Espaciado y distribución de las secciones de estas páginas. */
 .seccion-espaciada {
     padding: 5rem 0;
 }
 
+/* La portada usa un fondo suave y más espacio para destacar el título. */
 .seccion-hero {
     background-color: var(--color-principal);
     padding: 6rem 0;
 }
 
-/* Grilla de Historia */
+/* En Nosotros, el título y el texto de historia ocupan columnas separadas. */
 .cuadricula-historia {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
     gap: 4rem;
 }
 
-/* Grilla Fundadora */
+/* La foto y .fundadora-info quedan alineadas en dos columnas. */
 .cuadricula-fundadora {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
@@ -381,16 +391,19 @@ nav {
     align-items: center;
 }
 
+/* Redondea las esquinas de la foto de la fundadora. */
 .fundadora-imagen img {
     border-radius: 15px;
 }
 
+/* Destaca la especialidad que acompaña el nombre de la fundadora. */
 .profesion {
     color: var(--color-acento-oscuro);
     font-weight: 700;
     margin-bottom: 1.5rem;
 }
 
+/* La cita se separa del resto del texto con fondo claro y una línea de acento. */
 .cita-destacada {
     margin-top: 1.5rem;
     padding: 1.5rem;
@@ -401,17 +414,19 @@ nav {
     color: var(--color-negro);
 }
 
-/* Grilla Tarjetas (Misión y Visión) */
+/* Misión y visión se muestran lado a lado en pantallas grandes. */
 .cuadricula-tarjetas {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
+/* Ambas tarjetas comparten el mismo espacio interior. */
 .tarjeta-oscura,
 .tarjeta-rosa {
     padding: 4rem;
 }
 
+/* Número que identifica cada tarjeta o pilar. */
 .numero {
     font-size: 1.2rem;
     font-weight: bold;
@@ -419,6 +434,7 @@ nav {
     margin-bottom: 1rem;
 }
 
+/* La misión usa fondo oscuro y texto claro para diferenciarse de la visión. */
 .tarjeta-oscura {
     background-color: var(--color-texto);
     color: var(--color-blanco);
@@ -433,6 +449,7 @@ nav {
     color: var(--color-acento);
 }
 
+/* La visión usa el color de acento y texto oscuro. */
 .tarjeta-rosa {
     background-color: var(--color-acento);
     color: var(--color-negro);
@@ -474,12 +491,12 @@ nav {
     color: var(--color-gris);
 }
 
-/*CLASES PARA FILOSOFÍA*/
+/* Filosofía: limitamos el ancho del texto introductorio. */
 .contenedor-reducido {
     max-width: 700px;
 }
 
-/* Grilla de 3 columnas para los pilares */
+/* Los tres pilares se organizan en columnas. */
 .cuadricula-pilares {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -503,7 +520,7 @@ nav {
     margin-bottom: 1rem;
 }
 
-/* Sección de Identidad (Fondo negro) */
+/* El fondo oscuro destaca el manifiesto al final de Filosofía. */
 .fondo-oscuro {
     background-color: var(--color-negro);
     color: var(--color-blanco);
@@ -514,7 +531,7 @@ nav {
     color: var(--color-blanco);
 }
 
-/*DISEÑO RESPONSIVO (MÓVILES)*/
+/* En móvil, el menú y las cuadrículas se apilan para dejar más espacio al contenido. */
 
 @media (max-width: 768px) {
     nav {
