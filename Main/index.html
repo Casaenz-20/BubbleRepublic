@@ -25,7 +25,7 @@
       </ul>
     </nav>
   </header>
-    
+
 
     <!-- ========================================== -->
     <!-- PRELOADER (Solo en Index, justo al inicio) -->
@@ -200,7 +200,7 @@
                 <h2>Explora</h2>
 
                 <ul>
-                    <li><a href="Nosotros.html">Nosotros</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
                     <li><a href="filosofia.html">Filosofía</a></li>
                     <li><a href="productos.html">Productos</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
@@ -245,20 +245,20 @@
         </div>
     </div>
 </footer>
-       
+
     <!-- SCRIPT DEL PRELOADER ACTUALIZADO -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const preloader = document.getElementById('preloader');
             const body = document.body;
-            
+
             if (!preloader) {
                 body.classList.remove('cargando');
                 return;
             }
 
             // Calculamos el tiempo mínimo (3s) para que el SVG termine de dibujarse.
-            const tiempoMinimo = 3000; 
+            const tiempoMinimo = 3000;
             const inicioAnimacion = Date.now();
 
             function ejecutarSalida() {
@@ -268,15 +268,15 @@
                 setTimeout(() => {
                     // 1. Iniciamos el desvanecimiento del preloader
                     preloader.classList.add('oculto');
-                    
+
                     // 2. Liberamos el scroll y disparamos la animación del contenido
                     body.classList.remove('cargando');
-                    
+
                     // 3. Removemos el nodo del DOM tras la transición (0.8s = 800ms)
                     setTimeout(() => {
                         if (preloader.parentNode) preloader.remove();
-                    }, 800); 
-                    
+                    }, 800);
+
                 }, tiempoRestante);
             }
 
@@ -286,9 +286,9 @@
             } else {
                 window.addEventListener('load', ejecutarSalida);
             }
-            
+
             // Fallback de seguridad estricto por si falla la red
-            setTimeout(ejecutarSalida, 6000); 
+            setTimeout(ejecutarSalida, 6000);
         });
     </script>
 

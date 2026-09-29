@@ -80,21 +80,21 @@ body:not(.cargando) footer {
     text-align: center !important;
 }
 
-.preloader-logo { 
-    width: 280px !important; 
-    max-width: 70vw !important; 
-    height: auto !important; 
-    opacity: 0; 
-    animation: revelarLogo 1s ease-out 0.3s forwards; 
+.preloader-logo {
+    width: 280px !important;
+    max-width: 70vw !important;
+    height: auto !important;
+    opacity: 0;
+    animation: revelarLogo 1s ease-out 0.3s forwards;
 }
 @keyframes revelarLogo { to { opacity: 1; } }
 
 .molecula-svg { width: 200px !important; height: 40px !important; }
 
-.trazo-molecular { 
-    stroke-dasharray: 400; 
-    stroke-dashoffset: 400; 
-    animation: dibujarTrazo 1.8s ease-in-out 0.5s forwards; 
+.trazo-molecular {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: dibujarTrazo 1.8s ease-in-out 0.5s forwards;
 }
 @keyframes dibujarTrazo { to { stroke-dashoffset: 0; } }
 
@@ -129,18 +129,40 @@ body {
 }
 
 /*RESETEO Y ESTILOS BASE*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    ul{list-style: none;}
+}
+
+ul {
+    list-style: none;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
     background-color: var(--color-blanco);
     font-family: var(--fuente-texto);
     color: var(--color-texto);
     line-height: 1.7;
+}
+
+body > main {
+    flex: 1;
+    min-width: 0;
+}
+
+body > header,
+body > footer {
+    flex-shrink: 0;
 }
 
 @keyframes entradaSuave {
@@ -213,10 +235,11 @@ body {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
-
+/* Le añadi heigt:auto para que sea el tamaño de la imagen como tal */
 img {
-    max-width: 100%;
     display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 /* Mantiene el contenido centrado y evita que las líneas sean demasiado largas. */
@@ -246,16 +269,18 @@ h3 {
     line-height: 1.2;
 }
 
+/* Tamaños base para móvil : Cambio Kevin */
+
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 /* Da énfasis al fragmento destacado de los títulos. */
@@ -279,24 +304,21 @@ p {
 
 /* La barra permanece arriba mientras se recorre la página. */
 .encabezado {
-    background-color: transparent;
-    position: sticky;
-    top: 0;
+    position: static;
+    background-color: var(--color-blanco);
     z-index: 100;
 }
 
-/* Estilos base de las barras de navegación del sitio. */
-nav {
-    background-color: rgba(255, 255, 255, 0.85);
-    /* Un poco de opacidad para que se lea */
-    padding: 1rem 2rem;
+/* Solo afecta a la navegación del encabezado */
+.encabezado > nav {
     display: flex;
-    flex-direction: row;
-    /* Cambiado a row para que se vea como menú en PC */
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 1rem;
+
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 4px 6px rgba(198, 125, 114, 0.1);
-    /* Sombra con el tono rosa de la marca */
     backdrop-filter: blur(10px);
 }
 
@@ -320,21 +342,34 @@ nav {
     height: auto;
 }
 
-/* Los enlaces principales quedan alineados y con espacio entre ellos. */
+/* Menú vertical en móvil */
+
 .nav-menu {
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+
+    width: 100%;
     list-style: none;
-    gap: 1.5rem;
 }
 
 /* Los enlaces cambian de color y muestran una línea al pasar, enfocarlos o estar activos. */
 .nav-menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+    padding: 0.65rem 0.5rem;
+
     color: var(--color-texto);
-    text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
+    text-align: center;
+    text-decoration: none;
     text-transform: uppercase;
-    padding-bottom: 5px;
+
     position: relative;
     transition: color 0.3s ease;
 }
@@ -367,27 +402,29 @@ nav {
 
 /* Espaciado y distribución de las secciones de estas páginas. */
 .seccion-espaciada {
-    padding: 5rem 0;
+    padding: 3rem 0;
 }
 
 /* La portada usa un fondo suave y más espacio para destacar el título. */
 .seccion-hero {
     background-color: var(--color-principal);
-    padding: 6rem 0;
+    padding: 3rem 0;
 }
 
-/* En Nosotros, el título y el texto de historia ocupan columnas separadas. */
+
+/* Grilla de Historia */
 .cuadricula-historia {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 4rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
 }
 
-/* La foto y .fundadora-info quedan alineadas en dos columnas. */
+
+/* Grilla Fundadora */
 .cuadricula-fundadora {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 4rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
     align-items: center;
 }
 
@@ -417,13 +454,14 @@ nav {
 /* Misión y visión se muestran lado a lado en pantallas grandes. */
 .cuadricula-tarjetas {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
 }
 
 /* Ambas tarjetas comparten el mismo espacio interior. */
 .tarjeta-oscura,
 .tarjeta-rosa {
-    padding: 4rem;
+   padding: 1.5rem;
 }
 
 /* Número que identifica cada tarjeta o pilar. */
@@ -468,28 +506,7 @@ nav {
     color: var(--color-negro);
 }
 
-/*PIE DE PÁGINA*/
-.pie-pagina {
-    background-color: var(--color-negro);
-    color: var(--color-blanco);
-    padding: 2.5rem 0;
-}
 
-.contenido-pie {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.marca-pie h3 {
-    color: var(--color-blanco);
-    font-size: 1.5rem;
-}
-
-.derechos {
-    font-size: 0.8rem;
-    color: var(--color-gris);
-}
 
 /* Filosofía: limitamos el ancho del texto introductorio. */
 .contenedor-reducido {
@@ -499,13 +516,12 @@ nav {
 /* Los tres pilares se organizan en columnas. */
 .cuadricula-pilares {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
 }
-
 .pilar {
     background-color: var(--color-blanco);
-    padding: 3rem 2rem;
+    padding: 1.5rem;
     border: 1px solid transparent;
     transition: border-color 0.3s ease, transform 0.3s ease;
 }
@@ -531,72 +547,12 @@ nav {
     color: var(--color-blanco);
 }
 
-/* En móvil, el menú y las cuadrículas se apilan para dejar más espacio al contenido. */
-
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .cuadricula-historia,
-    .cuadricula-fundadora,
-    .cuadricula-tarjetas,
-    .cuadricula-pilares {
-        /* <-- Aquí añadimos la nueva grilla */
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .contenido-pie {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-
-    .page-hero {
-        padding: 60px 0;
-    }
-
-    .section {
-        padding: 60px 0;
-    }
-
-    .service-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .service-main {
-        grid-row: auto;
-        padding: 2rem 1.5rem;
-    }
-    .service-main ul {
-        grid-template-columns: 1fr;
-    }
-
-    .service-card {
-        padding: 2rem 1.5rem;
-        min-height: auto;
-    }
-
-
-    .payment-list {
-        justify-content: center;
-    }
-
-    .payment-list span {
-        flex: 1 1 calc(50% - 0.8rem);
-        text-align: center;
-        padding: 12px 15px;
-    }
-}
-
 /*Clases para Sevicios*/
 .page-hero {
-    padding: 130px 0;
+    padding: 3rem 0;
     background-color: var(--color-principal);
 }
+
 
 .page-hero h1 {
     margin-bottom: 1rem;
@@ -616,25 +572,26 @@ nav {
 }
 
 .container {
-    width: min(100% - 2rem, 1120px);
-    margin: auto;
+    width: calc(100% - 2rem);
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 .section {
-    padding: 110px 0;
+    padding: 3rem 0;
 }
 
 .service-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
 }
 
 .service-main {
-    grid-row: span 2;
-    padding: 3rem;
-    background: var(--color-negro);
-    color: white;
+    min-width: 0;
+    padding: 1.5rem;
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
 }
 
 .service-main h2 {
@@ -649,9 +606,9 @@ nav {
 
 .service-main ul {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: .6rem;
-    margin-top: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.6rem;
+    margin-top: 1.5rem;
 }
 
 .service-main li::before {
@@ -660,10 +617,13 @@ nav {
 }
 
 .service-card {
-    background: var(--color-principal);
-    padding: 2.5rem;
-    min-height: 250px;
-    transition: var(--transition);
+    min-width: 0;
+    padding: 1.5rem;
+    background-color: var(--color-principal);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
 .service-card:hover {
@@ -682,13 +642,16 @@ nav {
 .payment-list {
     display: flex;
     flex-wrap: wrap;
-    gap: .8rem;
+    justify-content: center;
+    gap: 0.8rem;
 }
 
 
 .payment-list span {
-    padding: 15px 20px;
-    background: var(--color-blanco);
+    max-width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    background-color: var(--color-blanco);
     transition: var(--transition);
 }
 
@@ -696,12 +659,6 @@ nav {
     transform: translateY(-5px);
     box-shadow:0 15px 45px rgba(55, 42, 38, .12);
 }
-
-
-.encabezado{
-  background-color: transparent;
-}
-
 
  /*Meylin*/
 
@@ -739,12 +696,11 @@ h2::selection {
     }
 }
 
+/* Espacio del catalogo en movil */
 .seccion-principal {
     width: 100%;
-    min-height: 1500px;
+    padding: 3rem 1rem;
     background-color: var(--color-secundario);
-    padding: 48px 24px;
-    box-sizing: border-box;
 }
 
 .contenedor-producto {
@@ -752,29 +708,27 @@ h2::selection {
     margin: 0 auto;
 }
 
+/* Una columna como punto de partida */
 .diseño-cuadricula {
     display: grid;
-    /* Las tarjetas se acomodan automáticamente */
-    grid-template-columns: repeat(auto-fill,
-            minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
 }
+/* Tarjeta sin altura fija */
 .tarjeta-producto {
+    width: 100%;
+    min-width: 0;
     perspective: 1000px;
     background-color: transparent;
-    height: 430px;
-    width: 100%;
 }
 
 /* Parte interior que realiza el giro */
+/* Las dos caras comparten el mismo espacio */
 .interior-tarjeta {
-    position: relative;
-    width: 100%;
+    display: grid;
     height: 100%;
-
-    transition: transform 0.6s ease;
-
     transform-style: preserve-3d;
+    transition: transform 0.6s ease;
 }
 
 /* Cuando la tarjeta está volteada */
@@ -783,36 +737,38 @@ h2::selection {
 }
 
 /* Cara frontal y trasera */
+/* Ambas caras determinan la altura necesaria */
 .tarjeta-frontal,
 .tarjeta-trasera {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    background-color: var(--color-blanco);
-    border-radius: 10px;
-    padding: 20px;
+    grid-area: 1 / 1;
+    min-width: 0;
+    padding: 1.25rem;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
-}
 
-/* Recupera el realce de las tarjetas al pasar el cursor sin afectar el giro. */
+    background-color: var(--color-blanco);
+    border-radius: 10px;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+/* Transiciones de la cara frontal */
 .tarjeta-frontal {
-    transition: transform 0.3s ease, background-color 0.3s ease,
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
         box-shadow 0.3s ease;
 }
 
-.tarjeta-producto:not(.volteada):hover .tarjeta-frontal {
+/* Realce al pasar el cursor o enfocar un botón interior */
+.tarjeta-producto:not(.volteada):hover .tarjeta-frontal,
+.tarjeta-producto:not(.volteada):focus-within .tarjeta-frontal {
     transform: translateY(-8px) scale(1.02);
     background-color: var(--color-tarjeta-hover);
     box-shadow: 0 14px 28px rgba(87, 82, 78, 0.16);
 }
-
 /* Cara trasera */
 .tarjeta-trasera {
     transform: rotateY(180deg);
@@ -820,10 +776,14 @@ h2::selection {
 }
 
 /* Contenido de la tarjeta */
+/* Contenido de ambas caras */
 .tarjeta-contenido {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     flex: 1;
+
+    min-width: 0;
     min-height: 0;
     padding-bottom: 8px;
 }
@@ -835,6 +795,7 @@ h2::selection {
 
 .tarjeta-trasera .tarjeta-contenido {
     justify-content: flex-start;
+
 }
 /* Imagen */
 .tarjeta-imagen {
@@ -867,46 +828,65 @@ h2::selection {
     color: var(--color-acento-oscuro);
 }
 .tarjeta-descripcion {
-    font-size: 12px;
-    line-height: 1.5;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
     color: var(--color-texto);
-    margin-top: 4px;
+    overflow-wrap: break-word;
 }
 
 /* Botón */
+/* Mantiene el botón después del contenido */
 .tarjeta-boton {
-    margin-top: 12px;
-    padding-top: 8px;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
 
-    gap: 8px;
-
+    margin-top: auto;
+    padding-top: 1rem;
     flex-shrink: 0;
 }
 .boton-personalizar {
-    padding: 5.6px 16px;
-    border-radius: 9999px;
-    color: var(--color-texto);
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2.24px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    border: none;
+    justify-content: center;
+
+    min-height: 44px;
+    max-width: 100%;
+    padding: 0.65rem 1rem;
+
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+
+    color: var(--color-blanco);
+    background-color: var(--color-texto);
+    border: 0;
+    border-radius: 30px;
     cursor: pointer;
-    background-color: var(--color-boton);
-    transition: background-color 0.2s ease,
-    color 0.2s ease;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
-.boton-personalizar:hover {
-    background-color: var(--color-btn-hover);
-    color: var(--color-texto);
+.boton-personalizar:hover,
+.boton-personalizar:focus-visible {
+    color: var(--color-negro);
+    background-color: var(--color-acento);
 }
 
+.boton-personalizar:focus-visible {
+    outline: 2px solid var(--color-texto);
+    outline-offset: 4px;
+}
+
+/* Respuesta al presionar con mouse o dedo */
+.boton-personalizar:active {
+    transform: scale(0.96);
+}
 /* Pie de la tarjeta trasera */
 .pie-tarjeta {
     margin-top: 12px;
@@ -922,17 +902,12 @@ h2::selection {
     margin-bottom: 50px;
 }
 
-
-.tarjeta-producto.volteada .interior-tarjeta {
-    transform: rotateY(180deg);
-}
-
 /*PARTE DE CONTACTO DE KEVIN Y DEMAS PARTES QUE ME CORRESPONDEN  */
 /* CONTACTO: ESTILOS BASE DEL FORMULARIO */
 
 /* CONTACTO, UBICACIONES Y FOOTER */
 
-/* Centra la presentaciÃ³n sin centrar las etiquetas del formulario. */
+/* Centra la presentación sin centrar las etiquetas del formulario. */
 .introduccion-contacto {
     max-width: 720px;
     margin: 0 auto;
@@ -980,6 +955,7 @@ h2::selection {
     box-sizing: border-box;
     width: 100%;
     padding: 0.9rem 1rem;
+    min-width: 0;
 
     font-family: inherit;
     font-size: 1rem;
@@ -1008,7 +984,7 @@ h2::selection {
     border-color: var(--color-acento-oscuro);
 }
 
-/* Al seleccionar un campo con el ratÃ³n o el teclado */
+/* Al seleccionar un campo con el mause o el teclado */
 .campo-formulario input:focus,
 .campo-formulario select:focus,
 .campo-formulario textarea:focus {
@@ -1018,7 +994,7 @@ h2::selection {
     outline-offset: 3px;
 }
 
-/* Permite ampliar el mensaje Ãºnicamente hacia abajo */
+/* Permite ampliar el mensaje unicamente hacia abajo */
 .campo-formulario textarea {
     resize: vertical;
 }
@@ -1029,10 +1005,12 @@ h2::selection {
     font-size: 0.9rem;
     color: var(--color-texto);
 }
-/* BotÃ³n del formulario */
+/* Botónn del formulario */
 .boton-contacto {
     margin-top: 1.5rem;
     padding: 0.9rem 1.5rem;
+    width: 100%;
+    min-height: 44px;
 
     font-family: inherit;
     font-size: 1rem;
@@ -1046,6 +1024,7 @@ h2::selection {
 
     transition: background-color 0.2s ease,
                 color 0.2s ease;
+
 }
 
 .boton-contacto:hover {
@@ -1056,6 +1035,12 @@ h2::selection {
 .boton-contacto:focus-visible {
     outline: 2px solid var(--color-texto);
     outline-offset: 4px;
+}
+
+/* Respuesta mientras se presiona Enviar */
+.boton-contacto:active {
+    background-color: var(--color-acento-oscuro);
+    color: var(--color-negro);
 }
 
 /* La respuesta ocupa espacio solo cuando tiene contenido */
@@ -1075,10 +1060,7 @@ h2::selection {
 .seccion-sedes {
     padding: 4rem 0;
     background:
-        radial-gradient(
-            circle at top right,
-            var(--color-secundario),
-            transparent 65%
+        radial-gradient(circle at top right, var(--color-secundario), transparent 65%
         ),
         var(--color-principal);
 }
@@ -1139,11 +1121,11 @@ h2::selection {
     outline-offset: 4px;
 }
 
-/* Panel con informaciÃ³n y mapa */
+/* Panel con información y mapa */
 
 .panel-sede {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: minmax(0, 1fr);
 
     overflow: hidden;
     background-color: var(--color-blanco);
@@ -1156,14 +1138,43 @@ h2::selection {
     display: none;
 }
 
+/* Entrada del panel al seleccionar una sede */
+.panel-sede:not([hidden]) {
+    animation: entradaSede 0.3s ease-out;
+}
+
+@keyframes entradaSede {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Entrada suave de Contacto */
+.introduccion-contacto,
+.formulario-contacto,
+.introduccion-sedes {
+    animation: entradaSede 0.6s ease-out;
+}
+
+/* Entrada del contenido del footer */
+.footer-marca,
+.footer-navegacion,
+.footer-ubicaciones {
+    animation: entradaSede 0.6s ease-out;
+}
+
 .informacion-sede {
     min-width: 0;
-    padding: 2rem;
+    padding: 1.5rem;
 
     background:
-        linear-gradient(
-            135deg,
-            var(--color-principal),
+        linear-gradient( 135deg, var(--color-principal),
             var(--color-secundario)
         );
 }
@@ -1238,11 +1249,11 @@ h2::selection {
     background-color: var(--color-secundario);
 }
 
+/* Mapa con altura suficiente en móvil */
 .mapa-sede iframe {
     display: block;
     width: 100%;
-    height: 100%;
-    min-height: 420px;
+    height: 320px;
     border: 0;
 }
 
@@ -1284,28 +1295,29 @@ h2::selection {
 
 /* Distribución del contenido */
 
+/* Contenido apilado para el  móvil */
 .footer-columnas {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: stretch;
     gap: 2.5rem;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
 }
 
+/* Logo y redes centrados */
 .footer-marca {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    flex: 2 1 280px;
     min-width: 0;
     text-align: center;
 }
 
 .footer-navegacion,
 .footer-ubicaciones {
-    flex: 1 1 180px;
     min-width: 0;
+    text-align: center;
 }
 
 /* Evita que el nav general cree una tarjeta en el footer */
@@ -1361,22 +1373,18 @@ h2::selection {
     border-radius: 50%;
     cursor: pointer;
 
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+    transition:transform 0.2s ease,
+               background-color 0.2s ease,
+               border-color 0.2s ease,
+               box-shadow 0.2s ease;
+
 }
 
 /* Fondo claro para conservar el contraste del icono gris */
 
-.footer-social:hover,
-.footer-social:focus-visible {
-    background-color: var(--color-principal);
-    border-color: var(--color-acento-oscuro);
-    box-shadow: 0 0 0 5px rgba(198, 125, 114, 0.2);
-}
-
+/* Se encoge un poco mientras lo presiono */
 .footer-social:active {
+    transform: scale(0.92);
     background-color: var(--color-secundario);
     box-shadow: 0 0 0 2px rgba(198, 125, 114, 0.2);
 }
@@ -1401,6 +1409,7 @@ h2::selection {
     display: inline-block;
     padding: 0.25rem 0;
     font-weight: 600;
+    min-height: 44px;
 
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -1461,13 +1470,13 @@ h2::selection {
 
 .footer-cierre {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
 
     padding-top: 1.25rem;
     border-top: 1px solid var(--color-texto);
+    text-align: center;
 }
 
 .footer-cierre small {
@@ -1479,6 +1488,7 @@ h2::selection {
     align-items: center;
     gap: 0.75rem;
     font-size: 0.85rem;
+    min-height: 44px;
 }
 
 .footer-volver span {
@@ -1491,8 +1501,7 @@ h2::selection {
     border: 1px solid var(--color-texto);
     border-radius: 50%;
 
-    transition:
-        background-color 0.2s ease,
+    transition:background-color 0.2s ease,
         color 0.2s ease;
 }
 
@@ -1517,21 +1526,19 @@ h2::selection {
 
 /*Clases para index(inicio)*/
 
-/*Es la parte principal para los elementos*/
-.hero{
-    min-height:calc(100vh - 82px);
-    background:var(--color-principal);
-    display:flex;
-    align-items:center;/*centra todo lo que este dentro del hero*/
-    overflow:hidden;/*quita la barra de desplazamiento*/
+.hero {
+    padding: 3rem 0;
+    background: var(--color-principal);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
-
-/*Aqui van los cuadros de informacion separados por columnas*/
+/* En movil  el texto y la imagen van uno debajo del otro */
 .hero-grid {
-    display:grid;
-    grid-template-columns:1fr .85fr; /*Una de las columnas es mas grande que la otra*/
-    gap:5rem;
-    align-items:center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
 }
 
 /*Contenedor para los botones en el inicio*/
@@ -1546,9 +1553,9 @@ h2::selection {
     display:inline-block;
     border:1px solid var(--color-negro);
     background:var(--color-negro);
-    color:var(--color-blanco); 
+    color:var(--color-blanco);
     padding:13px 23px;
-    font-size:0.75rem; 
+    font-size:0.75rem;
     font-weight:700;
     letter-spacing:0.08em;/*Los espacio para cada letra*/
     text-transform:uppercase; /*Pone el texto en mayuscula*/
@@ -1573,9 +1580,11 @@ h2::selection {
 
 /*Contenedor para la foto*/
 .hero-photo {
-    position:relative;
-    max-width:470px;
-    justify-self:end;
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+    margin-bottom: 1.5rem;
+    justify-self: center;
 }
 
 /*Diseño para imagen que va en el inicio*/
@@ -1606,12 +1615,12 @@ h2::selection {
     background:var(--color-blanco);
 }
 
-/*Clase para separar el subtitulo  y el parrafo en columnas*/
+/* Texto en una columna para aplicar y respetar el  movil first */
 .two-columns {
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:6rem;
-    align-items:start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
 }
 
 /*Diseño los textos que funcionan como links de otros html*/
@@ -1644,31 +1653,32 @@ h2::selection {
     margin: 1.5rem auto 2rem;
 }
 
-/*Esta es para que las targetas de los servicios esten en horizontal*/
+/* Titulo y enlace uno debajo del otro  */
 .section-title-row {
-    display:flex;
-    justify-content:space-between;
-    gap:3rem; align-items:end;
-    margin-bottom:3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
-/*Aqui se cambia el tamaño de los parrafos que sean hijos de section-title-row*/ 
+/*Aqui se cambia el tamaño de los parrafos que sean hijos de section-title-row*/
 .section-title-row > p {
     max-width:420px;
 }
 
-/*Esto hace que el contenedor de divida en 4 columna*/
+/* Categorias en una sola  coluna */
 .mini-grid {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
 }
 /*Le da estilo a todo los article que estan en el mini-grid*/
 .mini-grid article {
-    background:var(--color-principal);
-    padding:2rem; 
-    min-height:180px;
-    transition:var(--transition);
+    min-width: 0;
+    padding: 1.5rem;
+    background: var(--color-principal);
+    transition: var(--transition);
 }
 
 /*Efecto cuando se le pasa un mause en los article*/
@@ -1696,9 +1706,8 @@ h2::selection {
 
 /*Cambia el color de una parte de la pagina*/
 .cta {
-    background:var(--color-acento);
-    padding:100px 0;
-    
+    background: var(--color-acento);
+    padding: 3rem 0;
 }
 
 /*Cambia el tamaño de un h2 que esta en .cta*/
@@ -1706,3 +1715,408 @@ h2::selection {
     max-width:800px;
     margin:0 auto 2rem;
 }
+
+/* Parte de responsividad para todo tipo de dispositivos */
+/* BREAKPOINTS */
+/* TABLET: desde 768 px */
+
+@media (min-width: 768px) {
+    /* Mantiene visible el encabezado al bajar */
+    .encabezado {
+        position: sticky;
+        top: 0;
+    }
+
+    .encabezado > nav {
+        padding: 1.25rem 1.5rem;
+    }
+
+    /* Enlaces horizontales debajo del logo */
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem 0.75rem;
+    }
+
+    /* Tamaño de los títulos */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    /* Dos columnas de servicios */
+    .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    /* La presentación negra ocupa una fila completa */
+    .service-main {
+        grid-column: 1 / -1;
+        padding: 2rem;
+    }
+
+    .service-main ul {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-card {
+        padding: 2rem;
+    }
+
+     /* Más espacio desde tablet */
+    .seccion-espaciada,
+    .seccion-hero,
+    .page-hero,
+    .section {
+        padding: 4rem 0;
+    }
+
+    /* Misión, visión y pilares en dos columnas */
+    .cuadricula-tarjetas,
+    .cuadricula-pilares {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    .tarjeta-oscura,
+    .tarjeta-rosa,
+    .pilar {
+        padding: 2rem;
+    }
+
+     /* Inicio-- categoroas en dos columnas */
+    .mini-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .mini-grid article {
+        padding: 2rem;
+    }
+
+    .hero,
+    .cta {
+        padding: 4rem 0;
+    }
+
+    /* Productos-- dos columnas en tablet */
+    .diseño-cuadricula {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    .seccion-principal {
+        padding: 4rem 1.5rem;
+    }
+
+    /* Formulario-- centrado con más espacio interior */
+    .formulario-contacto {
+        padding: 2rem;
+    }
+
+    .boton-contacto {
+        width: auto;
+    }
+
+    /* Información y mapa a la par */
+    .panel-sede {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    }
+
+    .informacion-sede {
+        padding: 2rem;
+    }
+
+    .mapa-sede iframe {
+        height: 100%;
+        min-height: 420px;
+    }
+
+    /* Marca arriba-- navegación y ubicaciones debajo */
+    .footer-columnas {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-bottom: 3rem;
+    }
+
+    .footer-marca {
+        flex: 1 1 100%;
+    }
+
+    .footer-navegacion,
+    .footer-ubicaciones {
+        flex: 1 1 0;
+        text-align: left;
+    }
+
+    .footer-cierre {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+/* COMPUTADORA: desde 1024 px */
+
+@media (min-width: 1024px) {
+    /* Logo y menú en la misma fila */
+    .encabezado > nav {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 1.5rem 2rem;
+    }
+
+    .nav-menu {
+        width: auto;
+        justify-content: flex-end;
+    }
+
+    /* Tamaño de los títulos */
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    /* Cuatro columnas de servicios */
+    .service-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+        /* Espaciado de escritorio */
+    .seccion-espaciada,
+    .section {
+        padding: 5rem 0;
+    }
+
+    .seccion-hero,
+    .page-hero {
+        padding: 6rem 0;
+    }
+
+    /* Historia e imagen junto al texto */
+    .cuadricula-historia,
+    .cuadricula-fundadora {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 4rem;
+    }
+
+    /* Los tres pilares comparten una fila */
+    .cuadricula-pilares {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tarjeta-oscura,
+    .tarjeta-rosa {
+        padding: 3rem;
+    }
+
+    .pilar {
+        padding: 3rem 2rem;
+    }
+
+        /* Inicio-- presentacion en dos columnas */
+    .hero {
+        min-height: 75vh;
+        padding: 5rem 0;
+    }
+
+    .hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+        gap: 3rem;
+    }
+
+    .hero-photo {
+        justify-self: end;
+    }
+
+    .two-columns {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 4rem;
+    }
+
+    /* Titulo y enlace comparten una fila */
+    .section-title-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+    }
+
+    /* Las cuatro categorias comparten una fila */
+    .mini-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .cta {
+        padding: 6rem 0;
+    }
+
+    /* Productos-- tres columnas en computadora */
+    .diseño-cuadricula {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+     /* Las tres partes del footer-- comparten una fila */
+    .footer-marca {
+        flex: 2 1 280px;
+    }
+
+    .footer-navegacion,
+    .footer-ubicaciones {
+        flex: 1 1 180px;
+    }
+}
+
+/* PANTALLAS GRANDES  4K desde 2560 px */
+
+@media (min-width: 2560px) {
+    /* Limita el ancho de la navegación */
+    .encabezado > nav {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .nav-logo img {
+        width: 340px;
+    }
+
+    .nav-menu {
+        gap: 1.25rem;
+    }
+
+    .nav-menu a {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+
+    /* Mayor escala de títulos */
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    /* Amplía el contenido sin ocupar toda la pantalla */
+    .container {
+        max-width: 1600px;
+    }
+
+    /* Conserva las cuatro columnas y aumenta el espacio */
+    .service-grid {
+        gap: 2rem;
+    }
+
+    .service-main,
+    .service-card {
+        padding: 2.5rem;
+    }
+
+        /* Más aire en pantallas grandes */
+    .seccion-espaciada,
+    .section {
+        padding: 6rem 0;
+    }
+
+    .seccion-hero,
+    .page-hero {
+        padding: 8rem 0;
+    }
+
+        /* Inicio-- más espacio sin añadir columnas */
+    .hero {
+        padding: 7rem 0;
+    }
+
+    .hero-grid {
+        gap: 5rem;
+    }
+
+    .hero-photo {
+        max-width: 580px;
+    }
+
+    .two-columns {
+        gap: 6rem;
+    }
+
+    .mini-grid {
+        gap: 2rem;
+    }
+
+    .cta {
+        padding: 8rem 0;
+    }
+
+    /* Conserva tres columnas en pantallas grandes */
+    .contenedor-producto {
+        max-width: 1600px;
+    }
+
+    .diseño-cuadricula {
+        gap: 2.5rem;
+    }
+
+    .tarjeta-descripcion {
+        font-size: 1rem;
+    }
+
+    .boton-personalizar {
+        font-size: 1rem;
+        padding: 0.85rem 1.25rem;
+    }
+
+    /* Footer-- amplio con contenido centrado */
+    .footer-sitio > .contenedor {
+        max-width: 1400px;
+    }
+
+    .footer-columnas {
+        gap: 4rem;
+    }
+
+    .footer-logo img {
+        width: 340px;
+    }
+}
+
+/* Efecto al pasar el mouse */
+@media (hover: hover) and (pointer: fine) {
+    .footer-social:hover {
+        transform: translateY(-4px);
+        background-color: var(--color-principal);
+        border-color: var(--color-acento-oscuro);
+        box-shadow: 0 0 0 5px rgba(198, 125, 114, 0.2);
+    }
+
+    .footer-social:active {
+        transform: scale(0.92);
+    }
+}
+
+/* FIN DEL BLOQUE DE RESPONSIVIDAD */
