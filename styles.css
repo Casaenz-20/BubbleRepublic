@@ -1517,56 +1517,68 @@ h2::selection {
 
 /*Clases para index(inicio)*/
 
+/*Es la parte principal para los elementos*/
 .hero{
     min-height:calc(100vh - 82px);
     background:var(--color-principal);
     display:flex;
-    align-items:center;
-    overflow:hidden;
+    align-items:center;/*centra todo lo que este dentro del hero*/
+    overflow:hidden;/*quita la barra de desplazamiento*/
 }
 
+/*Aqui van los cuadros de informacion separados por columnas*/
 .hero-grid {
     display:grid;
-    grid-template-columns:1fr .85fr;
+    grid-template-columns:1fr .85fr; /*Una de las columnas es mas grande que la otra*/
     gap:5rem;
     align-items:center;
 }
 
+/*Contenedor para los botones en el inicio*/
 .hero-buttons {
     display:flex;
     gap:1rem;
     flex-wrap:wrap;
 }
 
+/*Esta clase es para todos los botones*/
 .btn {
     display:inline-block;
     border:1px solid var(--color-negro);
     background:var(--color-negro);
-    color:var(--color-blanco); padding:13px 23px;
-    font-size:.75rem; font-weight:700;
-    letter-spacing:.08em;
-    text-transform:uppercase;
+    color:var(--color-blanco); 
+    padding:13px 23px;
+    font-size:0.75rem; 
+    font-weight:700;
+    letter-spacing:0.08em;/*Los espacio para cada letra*/
+    text-transform:uppercase; /*Pone el texto en mayuscula*/
     transition:var(--transition);
     cursor:pointer;
+    text-decoration: none;
 }
 
+/*Estilo para el boton de servicios en el inicio*/
 .btn-light {
     background:var(--color-blanco);
     color:var(--color-negro);
     border-color:var(--color-blanco);
 }
 
+/*Estilo para el boton de contacto en el inicio*/
 .btn-outline {
     background:transparent;
     color:var(--color-negro);
+    list-style: none;
 }
 
+/*Contenedor para la foto*/
 .hero-photo {
     position:relative;
     max-width:470px;
     justify-self:end;
 }
 
+/*Diseño para imagen que va en el inicio*/
 .hero-photo img {
     position:relative;
     z-index:2;
@@ -1574,6 +1586,7 @@ h2::selection {
     box-shadow:0 15px 45px rgba(55, 42, 38, .12);
 }
 
+/*Border que esta atras de la imagen*/
 .photo-border {
     position:absolute;
     inset:25px -25px -25px 25px;
@@ -1582,15 +1595,18 @@ h2::selection {
     animation:float 4s ease-in-out infinite;
 }
 
+/*Animacion que parece esta flotando para el borde que esta detras de la foto*/
 @keyframes float {
     0%,100%{transform:translateY(0)}
     50%{transform:translateY(-12px)}
 }
 
+/*Fondo blanco para una parte de la pagina*/
 .intro {
     background:var(--color-blanco);
 }
 
+/*Clase para separar el subtitulo  y el parrafo en columnas*/
 .two-columns {
     display:grid;
     grid-template-columns:.8fr 1.2fr;
@@ -1598,33 +1614,37 @@ h2::selection {
     align-items:start;
 }
 
+/*Diseño los textos que funcionan como links de otros html*/
 .text-link {
     display:inline-block;
     margin-top:1.5rem;
     color:var(--color-acento-oscuro);
     font-weight:700;
-    border-bottom:1px solid var(--color-acento);
     padding-bottom:3px;
     transition:var(--transition);
+    text-decoration: none;
 }
-
+/*Cambia el tamaño del texto cuando se le pasa el mause*/
 .text-link:hover {
     transform:translateX(5px);
 }
 
+/*Es para que todos lo h2 que estan en la clase .fondo-oscuro sean blancos*/
 .fondo-oscuro h2 {
     color:var(--color-blanco);
 }
-
+/*Es para que todo que tenga la clase .eyebrow que esta en el fodo-oscuros sea de diferente color*/
 .fondo-oscuro .eyebrow {
     color:var(--color-acento);
 }
 
+/*Es para el tamaño de las letras*/
 .max-text {
     max-width: 700px;
     margin: 1.5rem auto 2rem;
 }
 
+/*Esta es para que las targetas de los servicios esten en horizontal*/
 .section-title-row {
     display:flex;
     justify-content:space-between;
@@ -1632,45 +1652,56 @@ h2::selection {
     margin-bottom:3rem;
 }
 
+/*Aqui se cambia el tamaño de los parrafos que sean hijos de section-title-row*/ 
 .section-title-row > p {
     max-width:420px;
 }
 
+/*Esto hace que el contenedor de divida en 4 columna*/
 .mini-grid {
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:1rem;
 }
-
+/*Le da estilo a todo los article que estan en el mini-grid*/
 .mini-grid article {
     background:var(--color-principal);
-    padding:2rem; min-height:180px;
+    padding:2rem; 
+    min-height:180px;
     transition:var(--transition);
 }
 
+/*Efecto cuando se le pasa un mause en los article*/
 .mini-grid article:hover {
     transform:translateY(-8px);
     background:var(--color-negro);
 }
 
+/*El efecto cambia los colores de los textos en el mini-grid*/
 .mini-grid article:hover h3,.mini-grid article:hover p {
     color:var(--color-blanco);
 }
 
+/*Color y tamaño para los span*/
 .mini-grid span {
     color:var(--color-acento-oscuro);
     font-size:.75rem;
 }
 
+/*Cambia los estilos de lo h3 que estan el mini-grid*/
 .mini-grid h3 {
     margin:1.2rem 0 .5rem;
     font-size:1.5rem;
 }
 
+/*Cambia el color de una parte de la pagina*/
 .cta {
     background:var(--color-acento);
     padding:100px 0;
+    
 }
+
+/*Cambia el tamaño de un h2 que esta en .cta*/
 .cta h2 {
     max-width:800px;
     margin:0 auto 2rem;
