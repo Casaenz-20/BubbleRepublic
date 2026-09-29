@@ -12,14 +12,18 @@
 
 <body id="inicio-pagina">
 
-  <!-- ENCABEZADO Y NAVEGACIÓN -->
+  <!-- Encabezado con el menú principal del sitio. -->
   <header class="encabezado">
+    <!-- Desde aquí se puede ir al inicio o a cualquiera de las otras secciones. -->
     <nav>
+      <!-- El logo también funciona como acceso directo al inicio. -->
       <a href="index.html" class="nav-logo" aria-label="Esencia &amp; Ciencia — Inicio">
         <img src="../imagenes/logotipo/logo-principal.webp" alt="Esencia &amp; Ciencia" width="1200" height="236">
       </a>
+      <!-- Enlaces a las páginas principales. -->
       <ul class="nav-menu">
         <li><a href="index.html">Inicio</a></li>
+        <!-- La clase "activo" resalta la página actual en el menú. -->
         <li><a href="nosotros.html" class="activo">Nosotros</a></li>
         <li><a href="filosofia.html">Filosofía</a></li>
         <li><a href="productos.html">Productos</a></li>
@@ -30,7 +34,7 @@
   </header>
 
   <main>
-    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <!-- Presentación breve del propósito de la marca. -->
     <section class="seccion-hero">
       <div class="contenedor centrado">
         <p class="etiqueta">SOBRE Ciencia & Escencia</p>
@@ -38,8 +42,9 @@
       </div>
     </section>
 
-    <!-- SECCIÓN HISTORIA (Usa Grid) -->
+    <!-- Aquí contamos cómo nació el proyecto y qué necesidad vimos. -->
     <section class="seccion-espaciada">
+      <!-- El título y la historia van en columnas para que el texto sea más fácil de recorrer. -->
       <div class="contenedor cuadricula-historia">
         <div class="historia-titulos oculto-izquierda">
           <p class="etiqueta">HISTORIA</p>
@@ -59,18 +64,18 @@
       </div>
     </section>
 
-    <!-- SECCIÓN FUNDADORA (Usa Grid) -->
+    <!-- Presentamos a la fundadora y su experiencia en dermocosmética. -->
     <section class="seccion-espaciada fondo-secundario">
       <div class="contenedor cuadricula-fundadora">
         <div class="fundadora-imagen oculto-zoom">
-          <img src="assets/fundadora.jpg" alt="Dra. Audry Fabiola Godoy López">
+          <img src="../imagenes/fundadora.png" alt="Dra. Audry Fabiola Godoy López">
         </div>
         <div class="fundadora-info">
           <p class="etiqueta">FUNDADORA Y DIRECTORA CIENTÍFICA</p>
           <h2>Dra. Mey Mey</h2>
           <p class="profesion">Farmacéutica · Maestría en Dermocosmética</p>
           <p>Soy la Dra. MeylinDa, farmacéutica y especialista en dermocosmética por la Universidad de Barcelona.</p>
-          <p>Fundé [Nombre de la Marca] con el propósito de transformar el paradigma del cuidado cutáneo, alejándolo de
+          <p>Fundé Esencia &amp; Ciencia con el propósito de transformar el paradigma del cuidado cutáneo, alejándolo de
             la intuición y acercándolo a la evidencia clínica.</p>
           <p>Durante mi trayectoria académica y clínica, identifiqué que gran parte de los consumidores adquieren
             activos sin comprender la necesidad fisiológica de su piel, ni la sinergia o incompatibilidad entre los
@@ -82,7 +87,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN MISIÓN Y VISIÓN (Usa Grid) -->
+    <!-- La misión habla de lo que hacemos hoy; la visión, de hacia dónde queremos llegar. -->
     <section class="seccion-espaciada">
       <div class="contenedor cuadricula-tarjetas">
         <article class="tarjeta-oscura oculto-arriba retraso-1">
@@ -94,7 +99,7 @@
         <article class="tarjeta-rosa oculto-arriba retraso-2">
           <span class="numero">02</span>
           <h3>Nuestra visión</h3>
-          <p>Consolidar a [Nombre de la Marca] como el estándar de oro en dermocosmética personalizada, reconocida por
+          <p>Consolidar a Esencia &amp; Ciencia como el estándar de oro en dermocosmética personalizada, reconocida por
             fusionar el rigor farmacéutico, la innovación científica y una experiencia de usuario excepcional.</p>
         </article>
       </div>
@@ -236,25 +241,27 @@
     </div>
 </footer>
 
+  <!-- Animamos algunos bloques cuando aparecen al desplazarse por la página. -->
   <script>
-    // Seleccionamos todos los elementos que queremos animar
+    // Buscamos los elementos que tienen una animación de entrada.
     const elementosAnimables = document.querySelectorAll('.oculto-arriba, .oculto-zoom, .oculto-izquierda, .oculto-derecha');
 
-    // Creamos el observador
+    // El observador espera a que cada elemento entre en pantalla.
     const observador = new IntersectionObserver((entradas) => {
       entradas.forEach(entrada => {
         if (entrada.isIntersecting) {
-          // Cuando el elemento entra en pantalla, le añadimos la clase que lo muestra
+          // Esta clase activa la transición definida en CSS.
           entrada.target.classList.add('mostrar-scroll');
-          // Dejamos de observarlo para que la animación solo ocurra una vez
+          // Ya visible, no hace falta seguir observando el elemento.
           observador.unobserve(entrada.target);
         }
       });
     }, {
-      threshold: 0.15 // El elemento debe estar 15% visible para que arranque la animación
+      // La animación empieza cuando el 15 % del elemento está visible.
+      threshold: 0.15
     });
 
-    // Le decimos al observador que vigile nuestros elementos
+    // Le pedimos al observador que revise cada elemento de la lista.
     elementosAnimables.forEach(elemento => {
       observador.observe(elemento);
     });

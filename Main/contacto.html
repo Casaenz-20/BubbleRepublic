@@ -168,8 +168,7 @@
                                 maxlength="1000"
                                 placeholder="Por ejemplo: quiero simplificar mi rutina y conocer las opciones disponibles."
                                 required
-                            >
-                            </textarea>
+                            ></textarea>
                         </div>
                         <p id="nota-formulario" class="nota-formulario">
                             Los campos con * son obligatorios.
@@ -466,6 +465,9 @@
             formulario.addEventListener("submit", function (evento) {
                 evento.preventDefault();
                 respuesta.textContent = "";
+                // Quita los espacios sobrantes antes de validar.
+            const mensaje = document.querySelector("#mensaje");
+            mensaje.value = mensaje.value.trim();
 
                 if (formulario.reportValidity()) {
                   // Limpia los campos después de validar.

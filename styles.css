@@ -18,8 +18,114 @@
     --color-tarjeta:#EAD9D4;
     --color-boton: #B86F67;
     --color-btn-hover:#f3897f;
+    --color-tarjeta-hover: #e9e9e9;
     --fuente-titulos: "Kenao Sans Serif", Georgia, serif;
     --fuente-texto: "Open Sans", Arial, sans-serif;
+}
+
+/* ============================================
+   CONTROL DE CARGA Y PRELOADER (VERSIÓN BLINDADA)
+   ============================================ */
+
+/* 1. Mientras carga: bloqueamos scroll y ocultamos TODO el contenido */
+body.cargando {
+    overflow: hidden !important;
+}
+
+body.cargando header,
+body.cargando main,
+body.cargando footer {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(20px) !important;
+    transition: none !important; /* Evita cualquier animación no deseada al inicio */
+}
+
+/* 2. Cuando termina de cargar: revelamos el contenido suavemente */
+body:not(.cargando) header,
+body:not(.cargando) main,
+body:not(.cargando) footer {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out !important;
+}
+
+/* 3. Preloader: siempre visible y por encima de todo mientras esté activo */
+.preloader {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 999999 !important;
+    background-color: var(--color-principal) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out !important;
+}
+
+.preloader.oculto {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* --- Animaciones internas del Preloader --- */
+.preloader-contenido {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    text-align: center !important;
+}
+
+.preloader-logo {
+    width: 280px !important;
+    max-width: 70vw !important;
+    height: auto !important;
+    opacity: 0;
+    animation: revelarLogo 1s ease-out 0.3s forwards;
+}
+@keyframes revelarLogo { to { opacity: 1; } }
+
+.molecula-svg { width: 200px !important; height: 40px !important; }
+
+.trazo-molecular {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: dibujarTrazo 1.8s ease-in-out 0.5s forwards;
+}
+@keyframes dibujarTrazo { to { stroke-dashoffset: 0; } }
+
+.nodo-molecular { opacity: 0; animation: aparecerNodo 0.5s ease-out forwards; }
+.nodo-molecular:nth-child(2) { animation-delay: 1s; }
+.nodo-molecular:nth-child(3) { animation-delay: 1.3s; }
+.nodo-molecular:nth-child(4) { animation-delay: 1.6s; }
+
+@keyframes aparecerNodo {
+    0% { opacity: 0; transform: scale(0); }
+    60% { transform: scale(1.3); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.preloader-texto {
+    font-family: var(--fuente-texto);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-acento-oscuro);
+    opacity: 0;
+    animation: fadeSuave 1s ease-out 1.8s forwards;
+}
+@keyframes fadeSuave { to { opacity: 1; } }
+
+/* 4. Definición base del body (SIN animaciones que interfieran) */
+body {
+    background-color: var(--color-blanco);
+    font-family: var(--fuente-texto);
+    color: var(--color-texto);
+    line-height: 1.7;
 }
 
 /*RESETEO Y ESTILOS BASE*/
@@ -47,8 +153,6 @@ body {
     font-family: var(--fuente-texto);
     color: var(--color-texto);
     line-height: 1.7;
-
-    animation: entradaSuave 0.6s ease-out forwards;
 }
 
 body > main {
@@ -79,9 +183,9 @@ body > footer {
     navigation: auto;
 }
 
-/* --- ANIMACIONES DE SCROLL --- */
+/* Estas clases preparan los elementos para aparecer al desplazarse por la página. */
 
-/* 1. Estado inicial oculto (Desplazado hacia abajo) */
+/* El bloque empieza un poco más abajo y sube al mostrarse. */
 .oculto-arriba {
     opacity: 0;
     transform: translateY(40px);
@@ -89,7 +193,7 @@ body > footer {
         transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 2. Estado inicial oculto (Zoom para imágenes) */
+/* La imagen aparece suavemente y vuelve a su tamaño normal. */
 .oculto-zoom {
     opacity: 0;
     transform: scale(1.05);
@@ -97,7 +201,7 @@ body > footer {
         transform 1s ease-out;
 }
 
-/* 3. Estado inicial oculto (Desplazado hacia la izquierda) */
+/* El bloque entra desde el lado izquierdo. */
 .oculto-izquierda {
     opacity: 0;
     transform: translateX(-50px);
@@ -105,7 +209,7 @@ body > footer {
         transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 4. Estado inicial oculto (Desplazado hacia la derecha) */
+/* El bloque entra desde el lado derecho. */
 .oculto-derecha {
     opacity: 0;
     transform: translateX(50px);
@@ -113,6 +217,7 @@ body > footer {
         transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* Estos retrasos hacen que los elementos aparezcan uno después del otro. */
 .retraso-1 {
     transition-delay: 0.1s;
 }
@@ -125,7 +230,7 @@ body > footer {
     transition-delay: 0.5s;
 }
 
-/* La clase que JavaScript añadirá cuando el elemento sea visible en pantalla */
+/* JavaScript agrega esta clase cuando el elemento entra en pantalla. */
 .mostrar-scroll {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -137,16 +242,19 @@ img {
     height: auto;
 }
 
+/* Mantiene el contenido centrado y evita que las líneas sean demasiado largas. */
 .contenedor {
     width: 90%;
     max-width: 1100px;
     margin: 0 auto;
 }
 
+/* Se usa en los bloques que presentan su contenido al centro. */
 .centrado {
     text-align: center;
 }
 
+/* Este fondo suave separa algunas secciones sin cambiar la paleta del sitio. */
 .fondo-secundario {
     background-color: var(--color-principal);
 }
@@ -175,6 +283,7 @@ h3 {
     font-size: 1.25rem;
 }
 
+/* Da énfasis al fragmento destacado de los títulos. */
 .texto-acento {
     color: var(--color-acento-oscuro);
 }
@@ -183,6 +292,7 @@ p {
     margin-bottom: 1rem;
 }
 
+/* Estilo común para rótulos como "Historia" o "Manifiesto". */
 .etiqueta {
     color: var(--color-acento-oscuro);
     font-size: 0.8rem;
@@ -192,7 +302,7 @@ p {
     margin-bottom: 1rem;
 }
 
-/*NAVEGACIÓN Y ENCABEZADO*/
+/* La barra permanece arriba mientras se recorre la página. */
 .encabezado {
     position: static;
     background-color: var(--color-blanco);
@@ -212,6 +322,7 @@ p {
     backdrop-filter: blur(10px);
 }
 
+/* El logo conserva su tamaño y no se encoge junto con los enlaces. */
 .nav-logo {
     display: block;
     flex-shrink: 0;
@@ -243,6 +354,7 @@ p {
     list-style: none;
 }
 
+/* Los enlaces cambian de color y muestran una línea al pasar, enfocarlos o estar activos. */
 .nav-menu a {
     display: flex;
     align-items: center;
@@ -288,11 +400,12 @@ p {
     transform-origin: left;
 }
 
-/* SECCIONES Y GRID*/
+/* Espaciado y distribución de las secciones de estas páginas. */
 .seccion-espaciada {
     padding: 3rem 0;
 }
 
+/* La portada usa un fondo suave y más espacio para destacar el título. */
 .seccion-hero {
     background-color: var(--color-principal);
     padding: 3rem 0;
@@ -315,16 +428,19 @@ p {
     align-items: center;
 }
 
+/* Redondea las esquinas de la foto de la fundadora. */
 .fundadora-imagen img {
     border-radius: 15px;
 }
 
+/* Destaca la especialidad que acompaña el nombre de la fundadora. */
 .profesion {
     color: var(--color-acento-oscuro);
     font-weight: 700;
     margin-bottom: 1.5rem;
 }
 
+/* La cita se separa del resto del texto con fondo claro y una línea de acento. */
 .cita-destacada {
     margin-top: 1.5rem;
     padding: 1.5rem;
@@ -335,18 +451,20 @@ p {
     color: var(--color-negro);
 }
 
-/* Grilla Tarjetas (Misión y Visión) */
+/* Misión y visión se muestran lado a lado en pantallas grandes. */
 .cuadricula-tarjetas {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
 }
 
+/* Ambas tarjetas comparten el mismo espacio interior. */
 .tarjeta-oscura,
 .tarjeta-rosa {
    padding: 1.5rem;
 }
 
+/* Número que identifica cada tarjeta o pilar. */
 .numero {
     font-size: 1.2rem;
     font-weight: bold;
@@ -354,6 +472,7 @@ p {
     margin-bottom: 1rem;
 }
 
+/* La misión usa fondo oscuro y texto claro para diferenciarse de la visión. */
 .tarjeta-oscura {
     background-color: var(--color-texto);
     color: var(--color-blanco);
@@ -368,6 +487,7 @@ p {
     color: var(--color-acento);
 }
 
+/* La visión usa el color de acento y texto oscuro. */
 .tarjeta-rosa {
     background-color: var(--color-acento);
     color: var(--color-negro);
@@ -388,12 +508,12 @@ p {
 
 
 
-/*CLASES PARA FILOSOFÍA*/
+/* Filosofía: limitamos el ancho del texto introductorio. */
 .contenedor-reducido {
     max-width: 700px;
 }
 
-/* Grilla de 3 columnas para los pilares */
+/* Los tres pilares se organizan en columnas. */
 .cuadricula-pilares {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -416,7 +536,7 @@ p {
     margin-bottom: 1rem;
 }
 
-/* Sección de Identidad (Fondo negro) */
+/* El fondo oscuro destaca el manifiesto al final de Filosofía. */
 .fondo-oscuro {
     background-color: var(--color-negro);
     color: var(--color-blanco);
@@ -542,6 +662,12 @@ p {
 
  /*Meylin*/
 
+p::selection,
+h1::selection,
+h2::selection {
+    background-color: var(--color-tarjeta);
+}
+
 .etiqueta-producto {
     color: var(--color-texto);
     font-size: 20px;
@@ -554,6 +680,20 @@ p {
     font-weight: 700;
     font-family: var(--fuente-titulos);
     margin-bottom: 20px;
+    text-align: center;
+    animation: aparecer 1s ease-in-out both;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* Espacio del catalogo en movil */
@@ -614,14 +754,20 @@ p {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
-/* Cambio suave del fondo al interactuar */
+/* Transiciones de la cara frontal */
 .tarjeta-frontal {
-    transition: background-color 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.tarjeta-frontal:hover,
-.tarjeta-frontal:focus-within {
-    background-color: var(--color-principal);
+/* Realce al pasar el cursor o enfocar un botón interior */
+.tarjeta-producto:not(.volteada):hover .tarjeta-frontal,
+.tarjeta-producto:not(.volteada):focus-within .tarjeta-frontal {
+    transform: translateY(-8px) scale(1.02);
+    background-color: var(--color-tarjeta-hover);
+    box-shadow: 0 14px 28px rgba(87, 82, 78, 0.16);
 }
 /* Cara trasera */
 .tarjeta-trasera {
@@ -630,11 +776,26 @@ p {
 }
 
 /* Contenido de la tarjeta */
+/* Contenido de ambas caras */
 .tarjeta-contenido {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     flex: 1;
+
     min-width: 0;
+    min-height: 0;
+    padding-bottom: 8px;
+}
+
+/* Mantiene el texto arriba y reserva una posición uniforme para los botones. */
+.tarjeta-frontal .tarjeta-contenido {
+    justify-content: flex-start;
+}
+
+.tarjeta-trasera .tarjeta-contenido {
+    justify-content: flex-start;
+
 }
 /* Imagen */
 .tarjeta-imagen {
@@ -994,6 +1155,20 @@ p {
     }
 }
 
+/* Entrada suave de Contacto */
+.introduccion-contacto,
+.formulario-contacto,
+.introduccion-sedes {
+    animation: entradaSede 0.6s ease-out;
+}
+
+/* Entrada del contenido del footer */
+.footer-marca,
+.footer-navegacion,
+.footer-ubicaciones {
+    animation: entradaSede 0.6s ease-out;
+}
+
 .informacion-sede {
     min-width: 0;
     padding: 1.5rem;
@@ -1198,22 +1373,18 @@ p {
     border-radius: 50%;
     cursor: pointer;
 
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+    transition:transform 0.2s ease,
+               background-color 0.2s ease,
+               border-color 0.2s ease,
+               box-shadow 0.2s ease;
+
 }
 
 /* Fondo claro para conservar el contraste del icono gris */
 
-.footer-social:hover,
-.footer-social:focus-visible {
-    background-color: var(--color-principal);
-    border-color: var(--color-acento-oscuro);
-    box-shadow: 0 0 0 5px rgba(198, 125, 114, 0.2);
-}
-
+/* Se encoge un poco mientras lo presiono */
 .footer-social:active {
+    transform: scale(0.92);
     background-color: var(--color-secundario);
     box-shadow: 0 0 0 2px rgba(198, 125, 114, 0.2);
 }
@@ -1370,35 +1541,44 @@ p {
     align-items: center;
 }
 
+/*Contenedor para los botones en el inicio*/
 .hero-buttons {
     display:flex;
     gap:1rem;
     flex-wrap:wrap;
 }
 
+/*Esta clase es para todos los botones*/
 .btn {
     display:inline-block;
     border:1px solid var(--color-negro);
     background:var(--color-negro);
-    color:var(--color-blanco); padding:13px 23px;
-    font-size:.75rem; font-weight:700;
-    letter-spacing:.08em;
-    text-transform:uppercase;
+    color:var(--color-blanco);
+    padding:13px 23px;
+    font-size:0.75rem;
+    font-weight:700;
+    letter-spacing:0.08em;/*Los espacio para cada letra*/
+    text-transform:uppercase; /*Pone el texto en mayuscula*/
     transition:var(--transition);
     cursor:pointer;
+    text-decoration: none;
 }
 
+/*Estilo para el boton de servicios en el inicio*/
 .btn-light {
     background:var(--color-blanco);
     color:var(--color-negro);
     border-color:var(--color-blanco);
 }
 
+/*Estilo para el boton de contacto en el inicio*/
 .btn-outline {
     background:transparent;
     color:var(--color-negro);
+    list-style: none;
 }
 
+/*Contenedor para la foto*/
 .hero-photo {
     position: relative;
     width: 100%;
@@ -1406,6 +1586,8 @@ p {
     margin-bottom: 1.5rem;
     justify-self: center;
 }
+
+/*Diseño para imagen que va en el inicio*/
 .hero-photo img {
     position:relative;
     z-index:2;
@@ -1413,6 +1595,7 @@ p {
     box-shadow:0 15px 45px rgba(55, 42, 38, .12);
 }
 
+/*Border que esta atras de la imagen*/
 .photo-border {
     position:absolute;
     inset:25px -25px -25px 25px;
@@ -1421,11 +1604,13 @@ p {
     animation:float 4s ease-in-out infinite;
 }
 
+/*Animacion que parece esta flotando para el borde que esta detras de la foto*/
 @keyframes float {
     0%,100%{transform:translateY(0)}
     50%{transform:translateY(-12px)}
 }
 
+/*Fondo blanco para una parte de la pagina*/
 .intro {
     background:var(--color-blanco);
 }
@@ -1438,34 +1623,31 @@ p {
     align-items: start;
 }
 
+/*Diseño los textos que funcionan como links de otros html*/
 .text-link {
     display:inline-block;
     margin-top:1.5rem;
     color:var(--color-acento-oscuro);
     font-weight:700;
-    border-bottom:1px solid var(--color-acento);
     padding-bottom:3px;
     transition:var(--transition);
+    text-decoration: none;
 }
-
+/*Cambia el tamaño del texto cuando se le pasa el mause*/
 .text-link:hover {
     transform:translateX(5px);
 }
 
-
-.dark-section {
-    background:var(--color-negro);
+/*Es para que todos lo h2 que estan en la clase .fondo-oscuro sean blancos*/
+.fondo-oscuro h2 {
     color:var(--color-blanco);
 }
-
-.dark-section h2 {
-    color:var(--color-blanco);
-}
-
-.dark-section .eyebrow {
+/*Es para que todo que tenga la clase .eyebrow que esta en el fodo-oscuros sea de diferente color*/
+.fondo-oscuro .eyebrow {
     color:var(--color-acento);
 }
 
+/*Es para el tamaño de las letras*/
 .max-text {
     max-width: 700px;
     margin: 1.5rem auto 2rem;
@@ -1480,6 +1662,7 @@ p {
     margin-bottom: 2rem;
 }
 
+/*Aqui se cambia el tamaño de los parrafos que sean hijos de section-title-row*/
 .section-title-row > p {
     max-width:420px;
 }
@@ -1490,7 +1673,7 @@ p {
     grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
 }
-
+/*Le da estilo a todo los article que estan en el mini-grid*/
 .mini-grid article {
     min-width: 0;
     padding: 1.5rem;
@@ -1498,29 +1681,36 @@ p {
     transition: var(--transition);
 }
 
+/*Efecto cuando se le pasa un mause en los article*/
 .mini-grid article:hover {
     transform:translateY(-8px);
     background:var(--color-negro);
 }
 
+/*El efecto cambia los colores de los textos en el mini-grid*/
 .mini-grid article:hover h3,.mini-grid article:hover p {
     color:var(--color-blanco);
 }
 
+/*Color y tamaño para los span*/
 .mini-grid span {
     color:var(--color-acento-oscuro);
     font-size:.75rem;
 }
 
+/*Cambia los estilos de lo h3 que estan el mini-grid*/
 .mini-grid h3 {
     margin:1.2rem 0 .5rem;
     font-size:1.5rem;
 }
 
+/*Cambia el color de una parte de la pagina*/
 .cta {
     background: var(--color-acento);
     padding: 3rem 0;
 }
+
+/*Cambia el tamaño de un h2 que esta en .cta*/
 .cta h2 {
     max-width:800px;
     margin:0 auto 2rem;
@@ -1912,6 +2102,20 @@ p {
 
     .footer-logo img {
         width: 340px;
+    }
+}
+
+/* Efecto al pasar el mouse */
+@media (hover: hover) and (pointer: fine) {
+    .footer-social:hover {
+        transform: translateY(-4px);
+        background-color: var(--color-principal);
+        border-color: var(--color-acento-oscuro);
+        box-shadow: 0 0 0 5px rgba(198, 125, 114, 0.2);
+    }
+
+    .footer-social:active {
+        transform: scale(0.92);
     }
 }
 
